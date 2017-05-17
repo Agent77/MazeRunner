@@ -33,6 +33,7 @@ namespace MazeRunner.Models
         string[] MazeString();
         void SetRows(int r);
         void SetCols(int c);
+        void MovePlayer(string direction);
 
         //MazeLib Maze;
         //RunnerPosition;
