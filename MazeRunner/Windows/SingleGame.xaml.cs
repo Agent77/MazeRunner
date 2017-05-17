@@ -55,13 +55,18 @@ namespace MazeRunner.Windows
 
             switch (k)
             {
-
                 case Key.Left:
-                    // myVM.VM_PlayerLocation = 
+                    myVM.MovePlayer("LEFT");
                     break;
-
-
-
+                case Key.Right:
+                    myVM.MovePlayer("RIGHT");
+                    break;
+                case Key.Up:
+                    myVM.MovePlayer("UP");
+                    break;
+                case Key.Down:
+                    myVM.MovePlayer("DOWN");
+                    break;
             }
         }
     }
