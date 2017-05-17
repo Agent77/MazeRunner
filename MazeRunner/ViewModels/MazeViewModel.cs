@@ -1,4 +1,5 @@
-﻿using MazeRunner.Models;
+﻿using MazeLib;
+using MazeRunner.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +37,7 @@ namespace MazeRunner.ViewModels
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string VM_PlayerLocation
+        public Position VM_PlayerLocation
         {
             get
             {
@@ -44,7 +45,7 @@ namespace MazeRunner.ViewModels
             }
             set
             {
-                //MyModel.MovePlayer(value ie new position);
+                //MyModel.MovePlayer(value);
             }
         }
 

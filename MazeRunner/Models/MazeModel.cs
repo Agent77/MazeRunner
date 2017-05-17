@@ -68,8 +68,8 @@ namespace MazeRunner.Models
                 NotifyPropertyChanged("Name");
             }
         }
-        private string playerLocation;
-        public string PlayerLocation
+        private Position playerLocation;
+        public Position PlayerLocation
         {
             get
             {

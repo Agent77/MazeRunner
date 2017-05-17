@@ -18,7 +18,7 @@ namespace MazeRunner.Models
 
         string Name { get; set; }
 
-        string PlayerLocation { get; set; }
+        Position PlayerLocation { get; set; }
 
         ClientCommunicator TcpMessenger { get; set; }
 

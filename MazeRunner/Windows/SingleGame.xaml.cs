@@ -25,19 +25,19 @@ namespace MazeRunner.Windows
 
         public SingleGame()
         {
-            
+
             //myVM = new SingleViewModel(new SingleMazeModel());
             //this.DataContext = myVM;
             InitializeComponent();
-           
+
         }
 
         public void SetVM(MazeViewModel m)
         {
             myVM = m;
             this.DataContext = myVM;
-            myVM.VM_Maze =  myVM.MyModel.MazeString();
-            
+            myVM.VM_Maze = myVM.MyModel.MazeString();
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -52,14 +52,17 @@ namespace MazeRunner.Windows
         private void Board_KeyDown(object sender, KeyEventArgs e)
         {
             Key k = e.Key;
-            switch (k) {
+
+            switch (k)
+            {
 
                 case Key.Left:
-                   // myVM.VM_PlayerLocation = 
+                    // myVM.VM_PlayerLocation = 
                     break;
-                    
 
-                
+
+
+            }
         }
     }
 }

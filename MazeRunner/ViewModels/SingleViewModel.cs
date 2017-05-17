@@ -23,17 +23,7 @@ namespace MazeRunner.ViewModels
         }
 
 
-        public string VM_PlayerLocation
-        {
-            get
-            {
-                return MyModel.PlayerLocation;
-            }
-            set
-            {
-                //MyModel.MovePlayer(value ie new position);
-            }
-        }
+        
         //private string name;
         public string VM_Name
         {
