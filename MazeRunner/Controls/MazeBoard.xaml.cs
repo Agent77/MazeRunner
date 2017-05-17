@@ -31,30 +31,14 @@ namespace MazeRunner.Controls
 
         public void UserControl_Loaded(object o, RoutedEventArgs e)
         {
-            //loop
-            int x = 0;
-            int y = 0;
-            int diff = 4;
-            for (x = 0; x < Cols; x += 4)
-            {
-                for (y = 0; y < Rows; y += 4)
-                {
-                    Path p = new Path();
-                    RectangleGeometry r = new RectangleGeometry(new Rect(x, y, 10, 10));
-                    SolidColorBrush b = GetColour(x, y);
-                    p.Fill = b;
-                    p.Data = r;
-                    Board.Children.Add(p);
-
-                }
-            }
+            
         }
 
 
         private SolidColorBrush GetColour(int r, int c)
         {
             if (MazeString[r][c] == '0')
-                return Brushes.Aqua;
+                return Brushes.Red;
             return Brushes.Black;
 
         }
@@ -81,7 +65,30 @@ namespace MazeRunner.Controls
         public void DrawBoard()
         {
 
-            //Create maze or do it in UserControl_Loaded
+            //loop
+            int x = 0;
+            int y = 0;
+            int diff = 4;
+            int xPlace = 0;
+            int yPlace = 0;
+            for (x = 0; xPlace < Cols; x += 10)
+            {
+                for (y = 0; yPlace < Rows; y += 10)
+                {
+                    Path p = new Path();
+                    RectangleGeometry r = new RectangleGeometry(new Rect(x, y, 10, 10));
+                    SolidColorBrush b = GetColour(xPlace, yPlace);
+                    p.Fill = b;
+                    p.Data = r;
+                    //p.Stroke = Brushes.Green;
+                    //p.StrokeThickness = 1;
+                    Board.Children.Add(p);
+                    yPlace++;
+
+                }
+                yPlace = 0;
+                xPlace++;
+            }
         }
         public string PlayerPosition
         {

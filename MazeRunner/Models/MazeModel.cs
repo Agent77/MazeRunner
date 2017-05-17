@@ -92,8 +92,8 @@ namespace MazeRunner.Models
 
         public MazeModel()
         {
-            // TcpMessenger = new ClientCommunicator();
-            // TcpMessenger.Connect(ServerIp, Port);
+             TcpMessenger = new ClientCommunicator();
+             TcpMessenger.Connect(ServerIp, Port);
 
         }
 
@@ -102,12 +102,13 @@ namespace MazeRunner.Models
             string s = "generate ";
             s += Name + " " + Rows + " " + Cols;
             TcpMessenger.Write(s);
-            new Task(() =>
-            {
+
+            //new Task(() =>
+            //{
                 string maze = TcpMessenger.read();
                 MyMaze = Maze.FromJSON(maze);
 
-            }).Start();
+            //}).Start();
         }
 
         public string GetMaze()
@@ -130,6 +131,7 @@ namespace MazeRunner.Models
         public string[] MazeString()
         {
             string[] wholeString = new string[Rows];
+            
             int row = 0;
             int col = 0;
             int place = 0;
@@ -138,12 +140,25 @@ namespace MazeRunner.Models
                 string mazeString = null;
                 for (col = 0; col < Cols; col++)
                 {
-                    mazeString += maze[row, col];
+                    if(MyMaze[row, col] == 0)
+                        mazeString += '0';
+                    else
+                        mazeString += '1';
                 }
                 wholeString[place] = mazeString;
                 place++;
             }
             return wholeString;
+        }
+
+        public void SetRows(int r)
+        {
+            rows = r;
+        }
+
+        public void SetCols(int c)
+        {
+            cols = c;
         }
     }
 }

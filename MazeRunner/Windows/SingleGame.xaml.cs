@@ -36,6 +36,8 @@ namespace MazeRunner.Windows
         {
             myVM = m;
             this.DataContext = myVM;
+            myVM.VM_Maze =  myVM.MyModel.MazeString();
+            
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -44,8 +46,20 @@ namespace MazeRunner.Windows
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
             Board.DrawBoard();
+
         }
 
-        
+        private void Board_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key k = e.Key;
+            switch (k) {
+
+                case Key.Left:
+                   // myVM.VM_PlayerLocation = 
+                    break;
+                    
+
+                
+        }
     }
 }

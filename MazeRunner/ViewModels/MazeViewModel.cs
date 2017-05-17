@@ -53,7 +53,7 @@ namespace MazeRunner.ViewModels
         {
             get
             {
-                return MyModel.MazeString();
+                return maze ;
             }
             set
             {
@@ -83,6 +83,7 @@ namespace MazeRunner.ViewModels
             set
             {
                 cols = value;
+                MyModel.SetCols(value);
                 
             }
         }
@@ -97,7 +98,7 @@ namespace MazeRunner.ViewModels
             set
             {
                 rows = value;
-                MyModel.rowsTry = value;
+                MyModel.SetRows(value);
             }
         }
     }

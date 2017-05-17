@@ -18,8 +18,8 @@ namespace MazeRunner.ViewModels
             string port = ConfigurationManager.AppSettings["port"];
             string row = ConfigurationManager.AppSettings["rows"];
             string col = ConfigurationManager.AppSettings["cols"];
-            rows = Int32.Parse(row);
-            cols = Int32.Parse(col);
+            VM_Rows = Int32.Parse(row);
+            VM_Cols = Int32.Parse(col);
         }
 
 
@@ -47,24 +47,7 @@ namespace MazeRunner.ViewModels
                 //name = value;
             }
         }
-        private int cols;
-        public int VM_Cols
-        {
-            get
-            {
-                return MyModel.Cols;
-            }
-            set
-            {
 
-                cols = value;
-
-                Console.WriteLine("BINDING WORKS: {0}", MyModel.Cols);
-            }
-        }
-
-        private int rows;
-       
 
         public void ExecuteCommand(string s)
         {

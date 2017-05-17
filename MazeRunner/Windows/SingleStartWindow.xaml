@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:MazeRunner.Controls"
 
         mc:Ignorable="d"
-        Title="SingleStartWindow" Height="305.705" Width="300.951">
+        Title="SingleStartWindow" Height="305.705" Width="300.951" KeyDown="Window_KeyDown">
     <Grid>
         <controls:GameInfoControl x:Name="GameInfo" Margin="37,59,32.333,63.667"></controls:GameInfoControl>
     </Grid>

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="SingleGame" Height="300" Width="300">
     <Grid>
-        <controls:MazeBoard x:Name="Board" MazeString="{Binding VM_Maze}" PlayerPosition="{Binding VM_PlayerPosition}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" Height="100" Margin="112,64,0,0" VerticalAlignment="Top" Width="100" Loaded="MazeBoard_Loaded"/>
+        <controls:MazeBoard x:Name="Board" MazeString="{Binding VM_Maze}" PlayerPosition="{Binding VM_PlayerPosition}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" Height="208" Margin="23,22,0,0" VerticalAlignment="Top" Width="247" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown"/>
     </Grid>
 
 </Window>

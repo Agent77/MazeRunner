@@ -34,12 +34,16 @@ namespace MazeRunner.Windows
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
+            myVM.MyModel.SendMaze();
             SingleGame sg = new SingleGame();
             sg.SetVM(myVM);
             sg.Show();
             this.Close();
         }
 
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
 
+        }
     }
 }

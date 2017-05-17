@@ -24,10 +24,23 @@ namespace MazeRunner
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+
+        private void SingleClick(object sender, RoutedEventArgs e)
+        {
             SingleStartWindow n = new SingleStartWindow();
             n.Show();
         }
 
+        private void MultiClick(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void SettingsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="The Maze Runner!" Height="350" Width="525">
     <Canvas Background="DarkOliveGreen">
-        <Image x:Name="logo" Source="/MazeRunner;component\Images\logo.jpg" Canvas.Left="177" Canvas.Top="20" Height="90"/>
-        <Image Source="/MazeRunner;component\Images\mazerunner.jpeg" Canvas.Left="20" Canvas.Bottom="10" Height="140"/>
         <Button x:Name="single" Canvas.Left="135" Canvas.Top="120" FontSize="30" Background="LightBlue" Click="SingleClick" Content="Single Player" Width="250"/>
         <Button x:Name="multi" Canvas.Left="135" Canvas.Top="170" FontSize="30" Background="LightBlue" Click="MultiClick" Content="Multi Player" Width="250"/>
         <Button x:Name="settings" Canvas.Left="135" Canvas.Top="220" FontSize="30" Background="LightBlue" Click="SettingsClick" Content="Settings" Width="250"/>
