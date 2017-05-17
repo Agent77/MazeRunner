@@ -1,0 +1,45 @@
+﻿using MazeRunner.Models;
+using MazeRunner.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace MazeRunner.Windows
+{
+    /// <summary>
+    /// Interaction logic for SingleStartWindow.xaml
+    /// </summary>
+    public partial class SingleStartWindow : Window
+    {
+        private MazeViewModel myVM;
+        private int x;
+        public SingleStartWindow()
+        {
+            myVM = new SingleViewModel(new SingleMazeModel());
+            this.DataContext = myVM;
+            InitializeComponent();
+
+            GameInfo.btnStart.Click += BtnStart_Click;
+        }
+
+        private void BtnStart_Click(object sender, RoutedEventArgs e)
+        {
+            SingleGame sg = new SingleGame();
+            sg.SetVM(myVM);
+            sg.Show();
+            this.Close();
+        }
+
+
+    }
+}

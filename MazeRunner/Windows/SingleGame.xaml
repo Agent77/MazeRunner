@@ -1,0 +1,14 @@
+﻿<Window x:Class="MazeRunner.Windows.SingleGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MazeRunner.Windows"
+        xmlns:controls="clr-namespace:MazeRunner.Controls"
+        mc:Ignorable="d"
+        Title="SingleGame" Height="300" Width="300">
+    <Grid>
+        <controls:MazeBoard x:Name="Board" MazeString="{Binding VM_Maze}" PlayerPosition="{Binding VM_PlayerPosition}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" Height="100" Margin="112,64,0,0" VerticalAlignment="Top" Width="100" Loaded="MazeBoard_Loaded"/>
+    </Grid>
+
+</Window>

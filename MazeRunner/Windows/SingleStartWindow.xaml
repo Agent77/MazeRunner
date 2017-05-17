@@ -1,0 +1,14 @@
+﻿<Window x:Class="MazeRunner.Windows.SingleStartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MazeRunner.Windows"
+        xmlns:controls="clr-namespace:MazeRunner.Controls"
+
+        mc:Ignorable="d"
+        Title="SingleStartWindow" Height="305.705" Width="300.951">
+    <Grid>
+        <controls:GameInfoControl x:Name="GameInfo" Margin="37,59,32.333,63.667"></controls:GameInfoControl>
+    </Grid>
+</Window>
