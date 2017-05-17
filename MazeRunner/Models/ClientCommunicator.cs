@@ -13,7 +13,7 @@ namespace MazeRunner.Models
     public class ClientCommunicator
     {
         private TcpClient tcpMessenger;
-        private int x;
+        
         private StreamWriter writer;
         private StreamReader reader;
         public ClientCommunicator()
