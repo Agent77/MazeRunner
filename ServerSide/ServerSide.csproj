@@ -33,16 +33,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
-      <HintPath>..\SearchAlgorithmsLib\bin\Debug\MazeGeneratorLib.dll</HintPath>
+      <HintPath>..\MazeRunner\MazeGeneratorLib.dll</HintPath>
     </Reference>
     <Reference Include="MazeLib">
-      <HintPath>..\SearchAlgorithmsLib\bin\Debug\MazeLib.dll</HintPath>
+      <HintPath>..\MazeRunner\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SearchAlgorithmsLib">
-      <HintPath>..\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll</HintPath>
+      <HintPath>bin\Debug\SearchAlgorithmsLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -80,12 +80,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClientSide\ClientSide.csproj">
-      <Project>{1BCA8B8E-E619-4A66-8819-436532A0C3D8}</Project>
-      <Name>ClientSide</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

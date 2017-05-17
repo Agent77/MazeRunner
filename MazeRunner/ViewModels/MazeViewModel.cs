@@ -102,6 +102,11 @@ namespace MazeRunner.ViewModels
                 MyModel.SetRows(value);
             }
         }
+
+        public void MovePlayer(string direction)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
