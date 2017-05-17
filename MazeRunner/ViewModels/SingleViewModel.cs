@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace MazeRunner.ViewModels
 {
@@ -13,6 +14,12 @@ namespace MazeRunner.ViewModels
         public SingleViewModel(IMazeModel model) : base(model)
         {
             //MyModel = model as SingleMazeModel;
+            string ip = ConfigurationManager.AppSettings["ip"];
+            string port = ConfigurationManager.AppSettings["port"];
+            string row = ConfigurationManager.AppSettings["rows"];
+            string col = ConfigurationManager.AppSettings["cols"];
+            rows = Int32.Parse(row);
+            cols = Int32.Parse(col);
         }
 
 
