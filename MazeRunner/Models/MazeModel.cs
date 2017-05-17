@@ -160,5 +160,10 @@ namespace MazeRunner.Models
         {
             cols = c;
         }
+
+        public void MovePlayer(string direction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

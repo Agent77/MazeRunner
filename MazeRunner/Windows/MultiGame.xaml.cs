@@ -16,23 +16,19 @@ using System.Windows.Shapes;
 namespace MazeRunner.Windows
 {
     /// <summary>
-    /// Interaction logic for MultiStartWindow.xaml
+    /// Interaction logic for MultiGame.xaml
     /// </summary>
-    public partial class MultiStartWindow : Window
+    public partial class MultiGame : Window
     {
         private MultiViewModel myVM;
-        public MultiStartWindow()
+
+        public MultiGame()
         {
             InitializeComponent();
-            myVM = new MultiViewModel(new MultiMazeModel());
-            DataContext = myVM;
         }
-
-        private void JoinClicked(object sender, RoutedEventArgs e)
+        public void SetVM(MazeViewModel m)
         {
-            MultiGame mg = new MultiGame();
-            mg.SetVM(myVM);
-            mg.Show();
+            myVM = m as MultiViewModel;
         }
     }
 }
