@@ -45,7 +45,7 @@ namespace MazeRunner.ViewModels
             }
             set
             {
-                //MyModel.MovePlayer(value);
+               // MyModel.MovePlayer(value);
             }
         }
 

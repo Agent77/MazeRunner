@@ -46,6 +46,7 @@ namespace MazeRunner.Windows
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
             Board.DrawBoard();
+            
 
         }
 
@@ -56,7 +57,8 @@ namespace MazeRunner.Windows
             switch (k)
             {
                 case Key.Left:
-                    myVM.MovePlayer("LEFT");
+                     myVM.MovePlayer("LEFT");
+             
                     break;
                 case Key.Right:
                     myVM.MovePlayer("RIGHT");
@@ -65,7 +67,7 @@ namespace MazeRunner.Windows
                     myVM.MovePlayer("UP");
                     break;
                 case Key.Down:
-                    myVM.MovePlayer("DOWN");
+                     myVM.MovePlayer("DOWN");
                     break;
             }
         }

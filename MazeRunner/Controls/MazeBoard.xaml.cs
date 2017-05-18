@@ -1,4 +1,5 @@
-﻿using MazeRunner.ViewModels;
+﻿using MazeLib;
+using MazeRunner.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace MazeRunner.Controls
     public partial class MazeBoard : UserControl
     {
         //private MazeViewModel myVM;
-
+        private Image player;
         public MazeBoard()
         {
             InitializeComponent();
@@ -94,12 +95,35 @@ namespace MazeRunner.Controls
                 yPlace = 0;
                 xPlace++;
             }
+            player = new Image();
+            player.Width = 10;
+            player.Height = 10;
+            player.Source = new BitmapImage(new Uri(@"./Images/elsa.jpg", UriKind.RelativeOrAbsolute));
+            
+            Canvas.SetLeft(player, InitialPos.Col);
+            Canvas.SetTop(player, InitialPos.Row);
+            Board.Children.Add(player);
         }
-        public string PlayerPosition
+
+
+
+        public Position InitialPos
+        {
+            get { return (Position)GetValue(InitialPosProperty); }
+            set { SetValue(InitialPosProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for InitialPos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InitialPosProperty =
+            DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(0));
+
+
+
+        public Position PlayerPosition
         {
             get
             {
-                return (string)GetValue(PlayerPositionProperty);
+                return (Position)GetValue(PlayerPositionProperty);
             }
             set
             {
@@ -108,11 +132,14 @@ namespace MazeRunner.Controls
         }
 
         public static readonly DependencyProperty PlayerPositionProperty =
-            DependencyProperty.Register("PlayerPosition", typeof(string), typeof(MazeBoard), new PropertyMetadata(ReDrawBoard));
+            DependencyProperty.Register("PlayerPosition", typeof(Position), typeof(MazeBoard), new PropertyMetadata(MovePlayer));
 
-        private static void ReDrawBoard(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void MovePlayer(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            //Redraw board with new position of player
+            Position p = (Position)e.NewValue;
+            MazeBoard m = (MazeBoard)d;
+            Canvas.SetLeft(m.player, p.Col);
+            Canvas.SetTop(m.player, p.Row);
         }
 
         public int Rows {

@@ -162,7 +162,7 @@ namespace MazeRunner.Models
         }
 
       
-            public void MovePlayer(string direction)
+            public Position MovePlayer(string direction)
             {
                 Position currPos = PlayerLocation;
                 switch (direction)
@@ -184,7 +184,12 @@ namespace MazeRunner.Models
                         PlayerLocation = currPos;
                         break;
                 }
-            
+            return currPos;
+        }
+
+        void IMazeModel.MovePlayer(string direction)
+        {
+            throw new NotImplementedException();
         }
     }
 }
