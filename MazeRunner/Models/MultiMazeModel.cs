@@ -10,14 +10,71 @@ namespace MazeRunner.Models
 {
    public class MultiMazeModel : MazeModel
     {
+
+        public MultiMazeModel() : base()
+        {
+            new Task(() =>
+            {
+                while (true)
+                {
+                    string pos = TcpMessenger.read();
+                    Position currPos = OppPos;
+
+                    if (pos.Contains("Left"))
+                    {
+                        currPos.Col = PlayerLocation.Col - 1;
+                        OppPos = currPos;
+                    }
+                    else if (pos.Contains("Right"))
+                    {
+                        currPos.Col = PlayerLocation.Col + 1;
+                        OppPos = currPos;
+                    }
+                    else if (pos.Contains("Up"))
+                    {
+                        currPos.Row = PlayerLocation.Row - 1;
+                        OppPos = currPos;
+                    }
+                    else if (pos.Contains("Down"))
+                    {
+                        currPos.Row = PlayerLocation.Row + 1;
+                        OppPos = currPos;
+                    }
+                }
+
+            }).Start();
+        }
+
+
         public void MovePlayer(string direction)
         {
             base.MovePlayer(direction);
-
-
-            //TcpMessenger.Write();
-            //Send and receive
+            string s = "play ";
+            s += direction;
+            TcpMessenger.Write(s);
         }
+
+        public void Join()
+        {
+            string s = "join ";
+            s += Name;
+            TcpMessenger.Write(s);
+        }
+
+        private Position oppPos;
+        public Position OppPos
+        {
+            get
+            {
+                return oppPos;
+            }
+            set
+            {
+                oppPos = value;
+                NotifyPropertyChanged("OppPos");
+            }
+        }
+
     }
        
 }

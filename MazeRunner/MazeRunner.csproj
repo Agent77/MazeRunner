@@ -64,6 +64,7 @@
     <Compile Include="Controls\GameInfoControl.xaml.cs">
       <DependentUpon>GameInfoControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\IMazeBoard.cs" />
     <Compile Include="Models\ClientCommunicator.cs" />
     <Compile Include="Models\IMazeModel.cs" />
     <Compile Include="Models\MazeModel.cs" />

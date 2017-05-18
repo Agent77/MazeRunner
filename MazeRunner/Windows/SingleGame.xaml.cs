@@ -29,7 +29,7 @@ namespace MazeRunner.Windows
             //myVM = new SingleViewModel(new SingleMazeModel());
             //this.DataContext = myVM;
             InitializeComponent();
-
+            this.KeyDown += Board_KeyDown;
         }
 
         public void SetVM(MazeViewModel m)
@@ -37,6 +37,7 @@ namespace MazeRunner.Windows
             myVM = m;
             this.DataContext = myVM;
             myVM.VM_Maze = myVM.MyModel.MazeString();
+
 
         }
         private void Button_Click(object sender, RoutedEventArgs e)

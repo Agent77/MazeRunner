@@ -107,6 +107,18 @@ namespace MazeRunner.Controls
 
 
 
+        public Position OppPos
+        {
+            get { return (Position)GetValue(OppPosProperty); }
+            set { SetValue(OppPosProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for OppPos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OppPosProperty =
+            DependencyProperty.Register("OppPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(new Position()));
+
+
+
         public Position GoalPos
         {
             get { return (Position)GetValue(GoalPosProperty); }

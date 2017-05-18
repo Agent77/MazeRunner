@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using MazeLib;
+using System.ComponentModel;
 
 namespace MazeRunner.ViewModels
 {
@@ -13,6 +15,12 @@ namespace MazeRunner.ViewModels
 
         public SingleViewModel(IMazeModel model) : base(model)
         {
+            MyModel = model as SingleMazeModel;
+            MyModel.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged("VM_" + e.PropertyName);
+
+            };
             //MyModel = model as SingleMazeModel;
             string ip = ConfigurationManager.AppSettings["ip"];
             string port = ConfigurationManager.AppSettings["port"];
@@ -22,8 +30,7 @@ namespace MazeRunner.ViewModels
             VM_Cols = Int32.Parse(col);
         }
 
-
-        
+       
         //private string name;
         public string VM_Name
         {
@@ -63,6 +70,7 @@ namespace MazeRunner.ViewModels
         public void MovePlayer(string direction)
         {
             MyModel.MovePlayer(direction);
+            
         }
 
     }
