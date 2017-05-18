@@ -39,6 +39,10 @@ namespace MazeRunner.Controls
         {
             if (MazeString[r][c] == '0')
                 return Brushes.Red;
+            if (MazeString[r][c] == '*')
+                return Brushes.Green;
+            if (MazeString[r][c] == '#')
+                return Brushes.Yellow;
             return Brushes.Black;
 
         }
@@ -83,6 +87,7 @@ namespace MazeRunner.Controls
                     //p.Stroke = Brushes.Green;
                     //p.StrokeThickness = 1;
                     Board.Children.Add(p);
+                    
                     yPlace++;
 
                 }

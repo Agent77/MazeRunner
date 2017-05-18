@@ -1,4 +1,5 @@
-﻿using MazeRunner.ViewModels;
+﻿using MazeRunner.Models;
+using MazeRunner.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,5 +35,7 @@ namespace MazeRunner.Windows
             mg.SetVM(myVM);
             mg.Show();
         }
+
+       
     }
 }

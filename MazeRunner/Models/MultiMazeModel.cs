@@ -10,9 +10,12 @@ namespace MazeRunner.Models
 {
    public class MultiMazeModel : MazeModel
     {
-        public void MovePlayer()
+        public void MovePlayer(string direction)
         {
-            TcpMessenger.Write()
+            base.MovePlayer(direction);
+
+
+            //TcpMessenger.Write();
             //Send and receive
         }
     }
