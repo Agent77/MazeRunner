@@ -68,6 +68,36 @@ namespace MazeRunner.Models
                 NotifyPropertyChanged("Name");
             }
         }
+
+        private Position initialPos;
+        public Position InitialPos
+        {
+            get
+            {
+                return initialPos;
+            }
+            set
+            {
+                initialPos = value;
+                NotifyPropertyChanged("InitialPos");
+            }
+        }
+
+
+        private Position goalPos;
+        public Position GoalPos
+        {
+            get
+            {
+                return goalPos;
+            }
+            set
+            {
+                goalPos = value;
+                NotifyPropertyChanged("GoalPos");
+            }
+        }
+
         private Position playerLocation;
         public Position PlayerLocation
         {
@@ -107,6 +137,8 @@ namespace MazeRunner.Models
             //{
                 string maze = TcpMessenger.read();
                 MyMaze = Maze.FromJSON(maze);
+             InitialPos = MyMaze.InitialPos;
+            GoalPos = MyMaze.GoalPos;
 
             //}).Start();
         }
@@ -140,10 +172,21 @@ namespace MazeRunner.Models
                 string mazeString = null;
                 for (col = 0; col < Cols; col++)
                 {
-                    if(MyMaze[row, col] == 0)
-                        mazeString += '0';
+                    if (InitialPos.Row == row && InitialPos.Col == col)
+                    {
+                        mazeString += '*';
+                    }
+                    else if (GoalPos.Row == row && GoalPos.Col == col)
+                    {
+                        mazeString += '#';
+                    }
                     else
-                        mazeString += '1';
+                    {
+                        if (MyMaze[row, col] == 0)
+                            mazeString += '0';
+                        else
+                            mazeString += '1';
+                    }
                 }
                 wholeString[place] = mazeString;
                 place++;
@@ -151,6 +194,8 @@ namespace MazeRunner.Models
             return wholeString;
         }
 
+
+        
         public void SetRows(int r)
         {
             rows = r;

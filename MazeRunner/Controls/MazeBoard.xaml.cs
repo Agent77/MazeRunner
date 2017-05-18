@@ -39,7 +39,7 @@ namespace MazeRunner.Controls
         private SolidColorBrush GetColour(int r, int c)
         {
             if (MazeString[r][c] == '0')
-                return Brushes.Red;
+                return Brushes.White;
             if (MazeString[r][c] == '*')
                 return Brushes.Green;
             if (MazeString[r][c] == '#')
@@ -73,15 +73,15 @@ namespace MazeRunner.Controls
             //loop
             int x = 0;
             int y = 0;
-            int diff = 4;
+            int diff = 300/Cols;
             int xPlace = 0;
             int yPlace = 0;
-            for (x = 0; xPlace < Cols; x += 10)
+            for (x = 0; xPlace < Cols; x += diff )
             {
-                for (y = 0; yPlace < Rows; y += 10)
+                for (y = 0; yPlace < Rows; y += diff)
                 {
                     Path p = new Path();
-                    RectangleGeometry r = new RectangleGeometry(new Rect(x, y, 10, 10));
+                    RectangleGeometry r = new RectangleGeometry(new Rect(x, y, diff, diff));
                     SolidColorBrush b = GetColour(xPlace, yPlace);
                     p.Fill = b;
                     p.Data = r;
@@ -98,12 +98,24 @@ namespace MazeRunner.Controls
             player = new Image();
             player.Width = 10;
             player.Height = 10;
-            player.Source = new BitmapImage(new Uri(@"./Images/elsa.jpg", UriKind.RelativeOrAbsolute));
+            player.Source = new BitmapImage(new Uri(@"/Images/elsa.jpg", UriKind.RelativeOrAbsolute));
             
             Canvas.SetLeft(player, InitialPos.Col);
             Canvas.SetTop(player, InitialPos.Row);
             Board.Children.Add(player);
         }
+
+
+
+        public Position GoalPos
+        {
+            get { return (Position)GetValue(GoalPosProperty); }
+            set { SetValue(GoalPosProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for GoalPos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GoalPosProperty =
+            DependencyProperty.Register("GoalPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(new Position()));
 
 
 
@@ -115,7 +127,7 @@ namespace MazeRunner.Controls
 
         // Using a DependencyProperty as the backing store for InitialPos.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InitialPosProperty =
-            DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(0));
+            DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(new Position()));
 
 
 

@@ -49,6 +49,18 @@ namespace MazeRunner.ViewModels
             }
         }
 
+        public Position VM_GoalPos
+        {
+            get
+            {
+                return MyModel.GoalPos;
+            }
+            set
+            {
+                // MyModel.MovePlayer(value);
+            }
+        }
+
         private string[] maze;
         public string[] VM_Maze
         {
@@ -102,6 +114,22 @@ namespace MazeRunner.ViewModels
                 MyModel.SetRows(value);
             }
         }
+
+        public Position InitialPos
+        {
+            get
+            {
+                return MyModel.InitialPos;
+            }
+            set
+            {
+
+            }
+        }
+
+
+
+     
 
         public void MovePlayer(string direction)
         {
