@@ -1,4 +1,5 @@
-﻿using MazeRunner.Models;
+﻿using MazeLib;
+using MazeRunner.Models;
 using MazeRunner.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace MazeRunner.Windows
     public partial class SingleGame : Window
     {
         private MazeViewModel myVM;
+        
 
         public SingleGame()
         {
@@ -29,7 +31,8 @@ namespace MazeRunner.Windows
             //myVM = new SingleViewModel(new SingleMazeModel());
             //this.DataContext = myVM;
             InitializeComponent();
-            this.KeyDown += Board_KeyDown;
+            KeyDown += Board_KeyDown;
+
         }
 
         public void SetVM(MazeViewModel m)
@@ -54,23 +57,8 @@ namespace MazeRunner.Windows
         private void Board_KeyDown(object sender, KeyEventArgs e)
         {
             Key k = e.Key;
-
-            switch (k)
-            {
-                case Key.Left:
-                     myVM.MovePlayer("LEFT");
-             
-                    break;
-                case Key.Right:
-                    myVM.MovePlayer("RIGHT");
-                    break;
-                case Key.Up:
-                    myVM.MovePlayer("UP");
-                    break;
-                case Key.Down:
-                     myVM.MovePlayer("DOWN");
-                    break;
-            }
+            Board.MovePlayer(k);
+           
         }
     }
 }

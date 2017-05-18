@@ -24,6 +24,17 @@ namespace MazeRunner.Controls
     {
         //private MazeViewModel myVM;
         private Image player;
+        public Image Player
+        {
+            get
+            {
+                return player;
+            }
+            set
+            {
+                player= value;
+            }
+        }
         public MazeBoard()
         {
             InitializeComponent();
@@ -96,12 +107,12 @@ namespace MazeRunner.Controls
                 xPlace++;
             }
             player = new Image();
-            player.Width = 10;
-            player.Height = 10;
+            player.Width = diff;
+            player.Height = diff;
             player.Source = new BitmapImage(new Uri(@"/Images/elsa.jpg", UriKind.RelativeOrAbsolute));
-            
-            Canvas.SetLeft(player, InitialPos.Col);
-            Canvas.SetTop(player, InitialPos.Row);
+            PlayerPosition = InitialPos;
+            Canvas.SetLeft(player, PlayerPosition.Col*diff);
+            Canvas.SetTop(player, PlayerPosition.Row*diff);
             Board.Children.Add(player);
         }
 
@@ -142,28 +153,47 @@ namespace MazeRunner.Controls
             DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(new Position()));
 
 
-
+        private Position playerPosition;
         public Position PlayerPosition
         {
             get
             {
-                return (Position)GetValue(PlayerPositionProperty);
+                return playerPosition;
             }
             set
             {
-                SetValue(PlayerPositionProperty, value);
+                playerPosition=value;
             }
         }
 
-        public static readonly DependencyProperty PlayerPositionProperty =
-            DependencyProperty.Register("PlayerPosition", typeof(Position), typeof(MazeBoard), new PropertyMetadata(MovePlayer));
+       /* public static readonly DependencyProperty PlayerPositionProperty =
+            DependencyProperty.Register("PlayerPosition", typeof(Position), typeof(MazeBoard), new PropertyMetadata(MovePlayer));*/
 
-        private static void MovePlayer(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public void MovePlayer(Key k)
         {
-            Position p = (Position)e.NewValue;
-            MazeBoard m = (MazeBoard)d;
-            Canvas.SetLeft(m.player, p.Col);
-            Canvas.SetTop(m.player, p.Row);
+            int diff = 300 / Cols;
+            Position current = PlayerPosition;
+            //Canvas.SetLeft(Brushes.White, PlayerPosition.Row);
+            switch (k)
+            {
+                case Key.Left:
+                    playerPosition.Col -= 1;
+                    Canvas.SetLeft(Player, PlayerPosition.Col*diff);
+
+                    break;
+                case Key.Right:
+                    playerPosition.Col += 1;
+                    Canvas.SetLeft(Player, PlayerPosition.Col*diff);
+                    break;
+                case Key.Up:
+                    playerPosition.Row -= 1;
+                    Canvas.SetTop(Player, PlayerPosition.Row*diff);
+                    break;
+                case Key.Down:
+                    playerPosition.Row += 1;
+                    Canvas.SetTop(Player, PlayerPosition.Row*diff);
+                    break;
+            }
         }
 
         public int Rows {

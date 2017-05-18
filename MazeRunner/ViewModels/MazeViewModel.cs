@@ -126,7 +126,7 @@ namespace MazeRunner.ViewModels
             }
             set
             {
-                
+                VM_PlayerLocation = value;
             }
         }
 
@@ -134,10 +134,10 @@ namespace MazeRunner.ViewModels
 
      
 
-        public void MovePlayer(string direction)
+        /*public void MovePlayer(string direction)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 
 

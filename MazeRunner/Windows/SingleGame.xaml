@@ -7,8 +7,10 @@
         xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
         Title="SingleGame" Height="300" Width="300">
-    <Grid>
-        <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" PlayerPosition="{Binding VM_PlayerPosition}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown"/>
-    </Grid>
+    
+    <Canvas>
+        <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown"/>
+    </Canvas>
+    
 
 </Window>
