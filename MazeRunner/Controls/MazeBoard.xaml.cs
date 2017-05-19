@@ -92,7 +92,7 @@ namespace MazeRunner.Controls
                 for (y = 0; yPlace < Rows; y += diff)
                 {
                     Path p = new Path();
-                    RectangleGeometry r = new RectangleGeometry(new Rect(x, y, diff, diff));
+                    RectangleGeometry r = new RectangleGeometry(new Rect(y, x, diff, diff));
                     SolidColorBrush b = GetColour(xPlace, yPlace);
                     p.Fill = b;
                     p.Data = r;
@@ -177,23 +177,56 @@ namespace MazeRunner.Controls
             switch (k)
             {
                 case Key.Left:
+                    current.Col = playerPosition.Col - 1;
+                    if (!IsInBounds(current) || MazeString[playerPosition.Row][playerPosition.Col - 1] == '1')
+                    {
+                        break;
+                    }
                     playerPosition.Col -= 1;
                     Canvas.SetLeft(Player, PlayerPosition.Col*diff);
+                    if (MazeString[playerPosition.Row][playerPosition.Col] == '#')
+                    {
+                       
+                    }
 
                     break;
                 case Key.Right:
+                    current.Col = playerPosition.Col + 1;
+                    if (!IsInBounds(current) || MazeString[playerPosition.Row][playerPosition.Col + 1] == '1')
+                    {
+                        break;
+                    }
                     playerPosition.Col += 1;
                     Canvas.SetLeft(Player, PlayerPosition.Col*diff);
                     break;
                 case Key.Up:
+                    current.Row = playerPosition.Row - 1;
+                    if (!IsInBounds(current) || MazeString[playerPosition.Row-1][playerPosition.Col] == '1')
+                    {
+                        break;
+                    }
                     playerPosition.Row -= 1;
                     Canvas.SetTop(Player, PlayerPosition.Row*diff);
                     break;
                 case Key.Down:
+                    current.Row = playerPosition.Row + 1;
+                    if (!IsInBounds(current) || MazeString[playerPosition.Row+1][playerPosition.Col] == '1')
+                    {
+                        break;
+                    }
                     playerPosition.Row += 1;
                     Canvas.SetTop(Player, PlayerPosition.Row*diff);
                     break;
             }
+        }
+
+        private bool IsInBounds(Position playerPosition)
+        {
+           if(playerPosition.Row>=0 && playerPosition.Row<=Rows-1 && playerPosition.Col>=0 && playerPosition.Col <= Cols - 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         public int Rows {

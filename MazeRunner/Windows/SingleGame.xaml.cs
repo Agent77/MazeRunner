@@ -62,5 +62,20 @@ namespace MazeRunner.Windows
             Board.MovePlayer(k);
            
         }
+
+        private void btnmain_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRestart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSolve_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
