@@ -27,15 +27,26 @@ namespace MazeRunner.Windows
             InitializeComponent();
             myVM = new MultiViewModel(new MultiMazeModel());
             DataContext = myVM;
+            GameInfo.btnStart.Click += BtnStart_Click;
         }
 
         private void JoinClicked(object sender, RoutedEventArgs e)
         {
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
+            MultiMazeModel m = myVM.MyModel as MultiMazeModel;
+            m.Join();
             mg.Show();
         }
 
-       
+        private void BtnStart_Click(object sender, RoutedEventArgs e)
+        {
+            myVM.MyModel.SendMaze();
+            MultiGame mg = new MultiGame();
+            mg.SetVM(myVM);
+            mg.Show();
+        }
+
+
     }
 }

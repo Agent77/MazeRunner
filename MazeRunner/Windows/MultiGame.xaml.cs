@@ -30,5 +30,33 @@ namespace MazeRunner.Windows
         {
             myVM = m as MultiViewModel;
         }
+
+        private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
+        {
+            Board.DrawBoard();
+            OpponentBoard.DrawBoard();
+        }
+
+        private void Board_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key k = e.Key;
+
+            switch (k)
+            {
+                case Key.Left:
+                    myVM.MovePlayer("LEFT");
+                    break;
+                case Key.Right:
+                    myVM.MovePlayer("RIGHT");
+                    break;
+                case Key.Up:
+                    myVM.MovePlayer("UP");
+                    break;
+                case Key.Down:
+                    myVM.MovePlayer("DOWN");
+                    break;
+            }
+        }
     }
 }
+

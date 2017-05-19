@@ -41,6 +41,7 @@ namespace MazeRunner.Windows
             this.DataContext = myVM;
             myVM.VM_Maze = myVM.MyModel.MazeString();
 
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {

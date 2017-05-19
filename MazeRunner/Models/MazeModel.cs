@@ -40,7 +40,6 @@ namespace MazeRunner.Models
             {
                 cols = value;
                 NotifyPropertyChanged("Cols");
-
             }
         }
 
@@ -137,12 +136,17 @@ namespace MazeRunner.Models
             //{
                 string maze = TcpMessenger.read();
                 MyMaze = Maze.FromJSON(maze);
-             InitialPos = MyMaze.InitialPos;
-            GoalPos = MyMaze.GoalPos;
+                InitialPos = MyMaze.InitialPos;
+                GoalPos = MyMaze.GoalPos;
 
             //}).Start();
         }
 
+
+        public void SetName(string s)
+        {
+            Name = s;
+        }
         public string GetMaze()
         {
             //RETURN STRING OF MAZE? or array?
@@ -230,11 +234,6 @@ namespace MazeRunner.Models
                         break;
                 }
             return currPos;
-        }
-
-        void IMazeModel.MovePlayer(string direction)
-        {
-            throw new NotImplementedException();
         }
     }
 }
