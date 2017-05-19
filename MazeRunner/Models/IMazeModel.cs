@@ -32,7 +32,7 @@ namespace MazeRunner.Models
 
         int rowsTry { get; set; }
         void NotifyPropertyChanged(string propName);
-        void SendMaze();
+        void SendMaze(string action);
         string GetMaze();
         string[] MazeString();
         void SetRows(int r);

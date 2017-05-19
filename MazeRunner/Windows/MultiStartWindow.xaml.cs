@@ -25,9 +25,11 @@ namespace MazeRunner.Windows
         public MultiStartWindow()
         {
             InitializeComponent();
-            myVM = new MultiViewModel(new MultiMazeModel());
+            MultiMazeModel m = new MultiMazeModel();
+            myVM = new MultiViewModel(m);
             DataContext = myVM;
             GameInfo.btnStart.Click += BtnStart_Click;
+            
         }
 
         private void JoinClicked(object sender, RoutedEventArgs e)
@@ -41,7 +43,7 @@ namespace MazeRunner.Windows
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            myVM.MyModel.SendMaze();
+            myVM.MyModel.SendMaze("start");
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
             mg.Show();

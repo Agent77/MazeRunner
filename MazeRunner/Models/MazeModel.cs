@@ -126,10 +126,10 @@ namespace MazeRunner.Models
 
         }
 
-        public void SendMaze()
+        public void SendMaze(string action)
         {
-            string s = "generate ";
-            s += Name + " " + Rows + " " + Cols;
+            string s = action;
+            s += " " + Name + " " + Rows + " " + Cols;
             TcpMessenger.Write(s);
 
             //new Task(() =>

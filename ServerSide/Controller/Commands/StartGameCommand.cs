@@ -37,8 +37,8 @@ namespace ServerSide
             //split up args
             model.GenerateMaze(args[0], int.Parse(args[1]), int.Parse(args[2]), client, "Multi");
             StreamWriter writer = new StreamWriter(client.GetStream());
-            writer.WriteLine("#");
-            writer.Flush();
+           // writer.WriteLine("#");
+           // writer.Flush();
             return "DO NOT CLOSE";
         }
     }

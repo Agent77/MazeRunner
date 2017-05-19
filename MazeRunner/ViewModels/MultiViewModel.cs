@@ -11,7 +11,7 @@ namespace MazeRunner.ViewModels
 {
     public class MultiViewModel : MazeViewModel
     {
-        MultiMazeModel MyModel;
+       // MultiMazeModel MyModel;
         public MultiViewModel(IMazeModel model) : base(model)
         {
             MyModel = model as MultiMazeModel;
@@ -27,7 +27,7 @@ namespace MazeRunner.ViewModels
         {
             get
             {
-                return MyModel.OppPos;
+                return oppPos;//MyModel.OppPos;
             }
             set
             {
@@ -35,10 +35,12 @@ namespace MazeRunner.ViewModels
 
             }
         }
+
+
         public void MovePlayer(string direction)
         {
             MyModel.MovePlayer(direction);
-            VM_OppPos = MyModel.OppPos;
+           // VM_OppPos = MyModel.OppPos;
         }
     }
 }

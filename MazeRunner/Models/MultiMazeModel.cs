@@ -13,6 +13,17 @@ namespace MazeRunner.Models
 
         public MultiMazeModel() : base()
         {
+           
+        }
+
+
+        public void MovePlayer(string direction)
+        {
+            base.MovePlayer(direction);
+            string s = "play ";
+            s += direction;
+            TcpMessenger.Write(s);
+
             new Task(() =>
             {
                 while (true)
@@ -45,20 +56,13 @@ namespace MazeRunner.Models
             }).Start();
         }
 
-
-        public void MovePlayer(string direction)
-        {
-            base.MovePlayer(direction);
-            string s = "play ";
-            s += direction;
-            TcpMessenger.Write(s);
-        }
-
         public void Join()
         {
             string s = "join ";
             s += Name;
             TcpMessenger.Write(s);
+
+
         }
 
         private Position oppPos;

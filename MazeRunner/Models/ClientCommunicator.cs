@@ -45,7 +45,6 @@ namespace MazeRunner.Models
                 string test = reader.ReadLine();
                 if (!test.Contains("#"))
                     result += test;
-
             }
             return result;
         } // blocking call

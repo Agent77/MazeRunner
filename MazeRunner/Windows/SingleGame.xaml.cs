@@ -22,6 +22,7 @@ namespace MazeRunner.Windows
     /// </summary>
     public partial class SingleGame : Window
     {
+        
         private MazeViewModel myVM;
         
 
@@ -32,6 +33,7 @@ namespace MazeRunner.Windows
             //this.DataContext = myVM;
             InitializeComponent();
             KeyDown += Board_KeyDown;
+            
 
         }
 

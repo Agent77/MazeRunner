@@ -21,13 +21,7 @@ namespace MazeRunner.ViewModels
                 NotifyPropertyChanged("VM_" + e.PropertyName);
 
             };
-            //MyModel = model as SingleMazeModel;
-            string ip = ConfigurationManager.AppSettings["ip"];
-            string port = ConfigurationManager.AppSettings["port"];
-            string row = ConfigurationManager.AppSettings["rows"];
-            string col = ConfigurationManager.AppSettings["cols"];
-            VM_Rows = Int32.Parse(row);
-            VM_Cols = Int32.Parse(col);
+           
         }
 
        

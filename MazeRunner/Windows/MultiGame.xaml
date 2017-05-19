@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MultiGame" Height="500" Width="800">
     <Grid>
-        <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" PlayerPosition="{Binding VM_PlayerPosition}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="438" Width="361" Margin="10,23,0,0"/>
-        <controls:MazeBoard x:Name="OpponentBoard" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" PlayerPosition="{Binding VM_OppPos}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="438" Width="339" Margin="430,23,0,0"/>
+        <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="438" Width="361" Margin="10,23,0,0"/>
+        <controls:MazeBoard x:Name="OpponentBoard" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" OppPos="{Binding VM_OppPos}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="438" Width="339" Margin="430,23,0,0"/>
 
     </Grid>
 </Window>

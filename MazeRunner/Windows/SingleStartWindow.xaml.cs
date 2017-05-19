@@ -34,7 +34,7 @@ namespace MazeRunner.Windows
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            myVM.MyModel.SendMaze();
+            myVM.MyModel.SendMaze("generate");
             SingleGame sg = new SingleGame();
             sg.SetVM(myVM);
             sg.Show();

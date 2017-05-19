@@ -24,6 +24,7 @@ namespace MazeRunner.ViewModels
         public MazeViewModel(IMazeModel model)
 
         {
+            MyModel = model;
             string ip = ConfigurationManager.AppSettings["ip"];
             string port = ConfigurationManager.AppSettings["port"];
             string row = ConfigurationManager.AppSettings["rows"];

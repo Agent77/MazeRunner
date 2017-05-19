@@ -43,8 +43,8 @@ namespace ServerSide
                 {
                     string commandLine = reader.ReadLine();
                     string result = controller.ExecuteCommand(commandLine, client);
-                    writer.WriteLine(result);
-                    writer.Flush();
+                   // writer.WriteLine(result);
+                    //writer.Flush();
                 }
             }).Start();
         }
