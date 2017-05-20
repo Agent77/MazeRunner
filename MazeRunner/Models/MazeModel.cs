@@ -161,7 +161,11 @@ namespace MazeRunner.Models
 
         public void Disconnect()
         {
-            throw new NotImplementedException();
+            string s = "close";
+            s += " "+ Name;
+            TcpMessenger.Write(s);
+            TcpMessenger.read();
+            TcpMessenger.disconnect();
         }
 
         public string[] MazeString()

@@ -61,12 +61,6 @@ namespace MazeRunner.ViewModels
             throw new NotImplementedException();
         }
 
-        public void MovePlayer(string direction)
-        {
-            MyModel.MovePlayer(direction);
-            
-        }
-
     }
 
 }

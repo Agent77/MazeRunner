@@ -49,7 +49,9 @@ namespace MazeRunner.Models
             return result;
         } // blocking call
 
-        void disconnect() { }
+        public void disconnect() {
+            tcpMessenger.Close();
+        }
     }
 
 }

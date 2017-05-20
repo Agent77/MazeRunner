@@ -63,19 +63,36 @@ namespace MazeRunner.Windows
            
         }
 
-        private void btnmain_Click(object sender, RoutedEventArgs e)
+        private void Main_Click(object sender, RoutedEventArgs e)
         {
-
+            string message = "Do you want to return to main menu?";
+            string caption = "Confirmation";
+            MessageBoxButton buttuon = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
+            if (result == MessageBoxResult.OK)
+            {
+                myVM.MyModel.Disconnect();
+                MainWindow m = new MainWindow();
+                m.Show();
+                this.Close();
+            }
+           
         }
 
-        private void btnRestart_Click(object sender, RoutedEventArgs e)
+        private void Restart_Click(object sender, RoutedEventArgs e)
         {
-
+            string message = "Do you want to restart game?";
+            string caption = "Confirmation";
+            MessageBoxButton buttuon = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
+            if (result==MessageBoxResult.OK) {
+                Board.RestartGame();
+            }
         }
 
-        private void btnSolve_Click(object sender, RoutedEventArgs e)
+        private void Solve_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
     }
 }
