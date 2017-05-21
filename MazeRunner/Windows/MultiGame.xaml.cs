@@ -39,10 +39,22 @@ namespace MazeRunner.Windows
             MultiMazeModel tempModel = myVM.MyModel as MultiMazeModel;
             tempModel.OpponentMoved += delegate (Object sender, Key e)
             {
+
+                int close = 10;
                 this.Dispatcher.Invoke(() =>
                 {
-                    OpponentBoard.MovePlayer(e);
+                  close = OpponentBoard.MovePlayer(e);
+                    if (close < 0)
+                    {
+                        LoserWindow lw = new LoserWindow();
+                        lw.Show();
+                    }
+                    if (close == 0)
+                    {
+                        myVM.MyModel.Disconnect();
+                    }
                 });
+                
 
             };
             myVM.VM_Maze = myVM.MyModel.MazeString();
@@ -91,7 +103,7 @@ namespace MazeRunner.Windows
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
             {
-                myVM.MyModel.Disconnect();
+                //myVM.MyModel.Disconnect();
                 MainWindow m = new MainWindow();
                 m.Show();
                 this.Close();

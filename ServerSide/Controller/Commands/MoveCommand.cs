@@ -56,9 +56,9 @@ namespace ServerSide
                 //writer.WriteLine("#");
                 writer.Flush();
             }
-            StreamWriter s = new StreamWriter(client.GetStream());
+          //  StreamWriter s = new StreamWriter(client.GetStream());
            // s.WriteLine("#");
-            s.Flush();
+          //  s.Flush();
             return "DO NOT CLOSE";
         }
 

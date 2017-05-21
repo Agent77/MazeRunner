@@ -79,6 +79,9 @@
     <Compile Include="Windows\FinishWindow.xaml.cs">
       <DependentUpon>FinishWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LoserWindow.xaml.cs">
+      <DependentUpon>LoserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MultiGame.xaml.cs">
       <DependentUpon>MultiGame.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\FinishWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LoserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

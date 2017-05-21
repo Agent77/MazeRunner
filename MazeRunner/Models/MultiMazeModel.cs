@@ -72,6 +72,10 @@ namespace MazeRunner.Models
                     {
                         OnOpponentMoved(Key.Down);
                     }
+                    else if (pos.Contains("stay"))
+                    {
+                        OnOpponentMoved(Key.Delete);
+                    }
                 }
 
             }).Start();
@@ -135,8 +139,11 @@ namespace MazeRunner.Models
                     {
                         OnOpponentMoved(Key.Down);
                     }
+                    else if (pos.Contains("stay"))
+                    {
+                        OnOpponentMoved(Key.Delete);
+                    }
                 }
-
             }).Start();
         }
 

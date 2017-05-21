@@ -43,7 +43,8 @@ namespace ServerSide
                 //Stream for opponent
                 NetworkStream stream = O.GetStream();
                 StreamWriter writer = new StreamWriter(stream);
-                str = "Opponent closed game.\r\nGame ended";
+                str = "stay";
+                Console.WriteLine("stay");
                 writer.WriteLine(str);
                 //writer.WriteLine("#");
                 writer.Flush();

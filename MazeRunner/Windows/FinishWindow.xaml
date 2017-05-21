@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeRunner.Windows"
         mc:Ignorable="d"
-        Title="FinishWindow" Height="300" Width="300">
+        Title="Winner!" Height="300" Width="300">
     <Grid Loaded="win_loaded">
         <Image Source="/Images/castle.jpg" Stretch="Fill"/>
         <TextBlock Text=" Congratulation you made it!" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Margin="16,98,17,135" Width="259" Height="36"/>

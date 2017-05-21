@@ -201,8 +201,14 @@ namespace MazeRunner.Controls
        /* public static readonly DependencyProperty PlayerPositionProperty =
             DependencyProperty.Register("PlayerPosition", typeof(Position), typeof(MazeBoard), new PropertyMetadata(MovePlayer));*/
 
-        public void MovePlayer(Key k)
+        public int MovePlayer(Key k)
         {
+            if(k == Key.Delete)
+            {
+                //LoserWindow lw = new LoserWindow();
+                //lw.Show();
+                return -1;
+            }
             int diff = 300 / Cols;
             Position current = PlayerPosition;
             //Canvas.SetLeft(Brushes.White, PlayerPosition.Row);
@@ -250,7 +256,9 @@ namespace MazeRunner.Controls
                 FinishedGame = true;
                 FinishWindow fw = new FinishWindow();
                 fw.Show();
+                return 0;
             }
+            return 1;
         }
 
         private bool IsInBounds(Position playerPosition)
