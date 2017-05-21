@@ -36,7 +36,7 @@ namespace ServerSide
             NetworkStream stream = client.GetStream();
             StreamWriter writer = new StreamWriter(stream);
             writer.WriteLine(allGames);
-            writer.WriteLine("#");
+           // writer.WriteLine("#");
             writer.Flush();
             return "DO NOT CLOSE";
         }

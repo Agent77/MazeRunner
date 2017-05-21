@@ -110,6 +110,11 @@ namespace MazeRunner.Models
                 NotifyPropertyChanged("PlayerLocation");
             }
         }
+
+        
+
+
+
         public string ServerIp { get; set; }
         public string Port { get; set; }
         public ClientCommunicator TcpMessenger { get; set; }
@@ -138,6 +143,7 @@ namespace MazeRunner.Models
                 MyMaze = Maze.FromJSON(maze);
                 InitialPos = MyMaze.InitialPos;
                 GoalPos = MyMaze.GoalPos;
+
 
             //}).Start();
         }
@@ -220,19 +226,19 @@ namespace MazeRunner.Models
                 Position currPos = PlayerLocation;
                 switch (direction)
                 {
-                    case "UP":
+                    case "Up":
                         currPos.Row = PlayerLocation.Row - 1;
                         PlayerLocation = currPos;
                         break;
-                    case "DOWN":
+                    case "Down":
                         currPos.Row = PlayerLocation.Row + 1;
                         PlayerLocation = currPos;
                         break;
-                    case "LEFT":
+                    case "Left":
                         currPos.Col = PlayerLocation.Col - 1;
                         PlayerLocation = currPos;
                         break;
-                    case "RIGHT":
+                    case "Right":
                         currPos.Col = PlayerLocation.Col + 1;
                         PlayerLocation = currPos;
                         break;

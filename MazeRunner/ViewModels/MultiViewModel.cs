@@ -6,28 +6,36 @@ using System.Threading.Tasks;
 using MazeRunner.Models;
 using MazeLib;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace MazeRunner.ViewModels
 {
     public class MultiViewModel : MazeViewModel
     {
-       // MultiMazeModel MyModel;
+       // public MultiMazeModel MyModel;
+
         public MultiViewModel(IMazeModel model) : base(model)
         {
-            MyModel = model as MultiMazeModel;
+            MyModel = (MultiMazeModel)model;
+            
+            //base.SetModel(MyModel);
+
             MyModel.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
 
             };
+
+          
         }
+        
 
         private Position oppPos;
         public Position VM_OppPos
         {
             get
             {
-                return oppPos;//MyModel.OppPos;
+                return oppPos;
             }
             set
             {
@@ -36,11 +44,28 @@ namespace MazeRunner.ViewModels
             }
         }
 
-
-        public void MovePlayer(string direction)
+        private ObservableCollection<string> gameList;
+        public ObservableCollection<string> VM_GameList
         {
-            MyModel.MovePlayer(direction);
-           // VM_OppPos = MyModel.OppPos;
+            get
+            {
+                MultiMazeModel m = MyModel as MultiMazeModel;
+                gameList = m.GameList;
+                return gameList;
+            }
+            set
+            {
+                gameList = value;
+            }
+        }
+        public Position MovePlayer(string direction)
+        {
+            return MyModel.MovePlayer(direction);
+        }
+
+        public void MoveEnemy(Position p)
+        {
+
         }
     }
 }

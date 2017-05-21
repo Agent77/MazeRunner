@@ -48,7 +48,7 @@ namespace MazeRunner.Controls
             {
                 finishedGame = value;
             }
-                }
+        }
 
         public MazeBoard()
         {
@@ -71,7 +71,6 @@ namespace MazeRunner.Controls
             if (MazeString[r][c] == '#')
                 return Brushes.White;
             return Brushes.Black;
-
         }
 
 
@@ -278,9 +277,9 @@ namespace MazeRunner.Controls
 
         // Using a DependencyProperty as the backing store for Cols.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColsProperty =
-            DependencyProperty.Register("Cols", typeof(int), typeof(MazeBoard), new PropertyMetadata(0));
+            DependencyProperty.Register("Cols", typeof(int), typeof(MazeBoard), new PropertyMetadata());
 
-
+       
         public void RestartGame()
         {
             int diff = 300 / Cols;

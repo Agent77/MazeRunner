@@ -48,7 +48,7 @@ namespace ServerSide
                 StreamWriter writer = new StreamWriter(stream);
                 writer.WriteLine(game.Maze.ToJSON());
                // writer.WriteLine("#");
-                //writer.Flush();
+                writer.Flush();
             }
             return "DO NOT CLOSE";
         }

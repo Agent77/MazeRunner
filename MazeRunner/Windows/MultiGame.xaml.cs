@@ -1,4 +1,6 @@
-﻿using MazeRunner.ViewModels;
+﻿using MazeLib;
+using MazeRunner.Models;
+using MazeRunner.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,37 +27,59 @@ namespace MazeRunner.Windows
         public MultiGame()
         {
             InitializeComponent();
+            KeyDown += Board_KeyDown;
+
         }
+
+
         public void SetVM(MazeViewModel m)
         {
             myVM = m as MultiViewModel;
+            this.DataContext = myVM;
+            MultiMazeModel tempModel = myVM.MyModel as MultiMazeModel;
+            tempModel.OpponentMoved += delegate (Object sender, Key e)
+            {
+                OpponentBoard.MovePlayer(e);
+            };
+             myVM.VM_Maze = myVM.MyModel.MazeString();
+
+
+            
         }
+
+
 
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
             Board.DrawBoard();
             OpponentBoard.DrawBoard();
+
         }
 
         private void Board_KeyDown(object sender, KeyEventArgs e)
         {
             Key k = e.Key;
+            Board.MovePlayer(k);
+            Position pos;
+            MultiMazeModel tempModel = myVM.MyModel as MultiMazeModel;
 
             switch (k)
             {
                 case Key.Left:
-                    myVM.MovePlayer("LEFT");
+                    tempModel.MovePlayer("Left");
                     break;
                 case Key.Right:
-                    myVM.MovePlayer("RIGHT");
+                    tempModel.MovePlayer("Right");
                     break;
                 case Key.Up:
-                    myVM.MovePlayer("UP");
+                    tempModel.MovePlayer("Up");
                     break;
                 case Key.Down:
-                    myVM.MovePlayer("DOWN");
+                    tempModel.MovePlayer("Down");
                     break;
             }
+
+
         }
     }
 }

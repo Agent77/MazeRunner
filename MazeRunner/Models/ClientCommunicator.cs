@@ -40,11 +40,15 @@ namespace MazeRunner.Models
         public string read()
         {
             string result = null;
-            while(reader.Peek() > 0)
+            string test = reader.ReadLine();
+            if (!test.Contains("#"))
+                result += test;
+            while (reader.Peek() > 0)
             {
-                string test = reader.ReadLine();
+                test = reader.ReadLine();
                 if (!test.Contains("#"))
                     result += test;
+               
             }
             return result;
         } // blocking call

@@ -72,6 +72,8 @@
     <Compile Include="Models\IMazeModel.cs" />
     <Compile Include="Models\MazeModel.cs" />
     <Compile Include="Models\MultiMazeModel.cs" />
+    <Compile Include="Models\PositionChangedHandler.cs" />
+    <Compile Include="Models\PositionEventArgs.cs" />
     <Compile Include="Models\SingleMazeModel.cs" />
     <Compile Include="ViewModels\MazeViewModel.cs" />
     <Compile Include="ViewModels\MultiViewModel.cs" />

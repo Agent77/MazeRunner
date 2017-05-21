@@ -50,13 +50,14 @@ namespace ServerSide
             {
                 NetworkStream stream = Opponent.GetStream();
                 StreamWriter writer = new StreamWriter(stream);
+                Console.WriteLine(jsonString);
                 //Turns the move into a JSON to send to opponent
                 writer.WriteLine(jsonString);
-                writer.WriteLine("#");
+                //writer.WriteLine("#");
                 writer.Flush();
             }
             StreamWriter s = new StreamWriter(client.GetStream());
-            s.WriteLine("#");
+           // s.WriteLine("#");
             s.Flush();
             return "DO NOT CLOSE";
         }

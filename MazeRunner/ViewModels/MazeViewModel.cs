@@ -22,7 +22,6 @@ namespace MazeRunner.ViewModels
         //rows, columns, name of maze (for data binding)
 
         public MazeViewModel(IMazeModel model)
-
         {
             MyModel = model;
             string ip = ConfigurationManager.AppSettings["ip"];
@@ -34,6 +33,18 @@ namespace MazeRunner.ViewModels
 
 
         }
+
+       public void SetModel(IMazeModel m)
+        {
+            MyModel = m;
+            string ip = ConfigurationManager.AppSettings["ip"];
+            string port = ConfigurationManager.AppSettings["port"];
+            string row = ConfigurationManager.AppSettings["rows"];
+            string col = ConfigurationManager.AppSettings["cols"];
+            VM_Rows = Int32.Parse(row);
+            VM_Cols = Int32.Parse(col);
+        }
+
         public void NotifyPropertyChanged(string propertyName)
         {
             //  VM_Name = MyModel.getName();
@@ -51,7 +62,7 @@ namespace MazeRunner.ViewModels
                // MyModel.MovePlayer(value);
             }
         }
-
+        
         public Position VM_GoalPos
         {
             get

@@ -12,6 +12,8 @@ namespace MazeRunner.ViewModels
 {
     public class SingleViewModel : MazeViewModel
     {
+       // public SingleMazeModel MyModel;
+
 
         public SingleViewModel(IMazeModel model) : base(model)
         {
