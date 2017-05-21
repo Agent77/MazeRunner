@@ -30,6 +30,7 @@ namespace MazeRunner.Controls
         {
             SingleStartWindow n = new SingleStartWindow();
             n.Show();
+            
         }
 
         private void MultiClick(object sender, RoutedEventArgs e)

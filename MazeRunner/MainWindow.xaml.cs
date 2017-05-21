@@ -27,6 +27,27 @@ namespace MazeRunner
            
         }
 
+
+        private void SingleClick(object sender, RoutedEventArgs e)
+        {
+            SingleStartWindow n = new SingleStartWindow();
+            n.Show();
+            this.Close();
+
+        }
+
+        private void MultiClick(object sender, RoutedEventArgs e)
+        {
+            MultiStartWindow mw = new MultiStartWindow();
+            mw.Show();
+            this.Close();
+
+        }
+
+        private void SettingsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
         /*private void SingleClick(object sender, RoutedEventArgs e)
         {
             SingleStartWindow n = new SingleStartWindow();

@@ -7,13 +7,31 @@
         xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
         Title="Frozen Maze!" Height="400" Width="500">
-    <Grid>
+    <Grid Background="PaleTurquoise">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Viewbox Grid.Row="0">
-            <controls:MainWindow Height="504" Width="504" />
-        </Viewbox>
+
+
+        <Image Source="/Images/frozen maze.jpg" Grid.Row="1" Width="400" Stretch="Fill" />
+
+
+        <Button x:Name="single" Grid.Row="3" FontSize="30" Background="DodgerBlue" Click="SingleClick" Content="Single Player" Width="250"/>
+
+
+        <Button x:Name="multi" Grid.Row="5" FontSize="30" Background="DodgerBlue" Click="MultiClick" Content="Multi Player" Width="250"/>
+
+
+        <Button x:Name="settings" Grid.Row="7" FontSize="30" Background="DodgerBlue" Click="SettingsClick" Content="Settings" Width="250"/>
+
     </Grid>
 
 </Window>

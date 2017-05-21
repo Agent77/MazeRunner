@@ -26,21 +26,7 @@ namespace MazeRunner.ViewModels
            
         }
 
-       
-        //private string name;
-        public string VM_Name
-        {
-            get
-            {
-                return MyModel.Name;
-            }
-
-            set
-            {
-                //name = value;
-            }
-        }
-
+      
 
         public void ExecuteCommand(string s)
         {
