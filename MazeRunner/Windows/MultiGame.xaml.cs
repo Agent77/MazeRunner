@@ -82,6 +82,21 @@ namespace MazeRunner.Windows
 
 
         }
+
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "Do you want to return to main menu?";
+            string caption = "Confirmation";
+            MessageBoxButton buttuon = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
+            if (result == MessageBoxResult.OK)
+            {
+                myVM.MyModel.Disconnect();
+                MainWindow m = new MainWindow();
+                m.Show();
+                this.Close();
+            }
+        }
     }
 }
 

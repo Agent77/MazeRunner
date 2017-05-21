@@ -41,10 +41,13 @@ namespace MazeRunner.Windows
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
             mg.Show();
+            this.Close();
         }
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
+            waitingWindow ww = new waitingWindow();
+            ww.Show();
             myVM.MyModel.SendMaze("start");
             MultiMazeModel m = myVM.MyModel as MultiMazeModel;
             m.BeginMoves();
@@ -53,7 +56,11 @@ namespace MazeRunner.Windows
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
             myVM.VM_GameList = null;
+
+            ww.Close();
             mg.Show();
+
+            this.Close();
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)

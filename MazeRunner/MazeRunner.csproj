@@ -91,6 +91,9 @@
     <Compile Include="Windows\SingleStartWindow.xaml.cs">
       <DependentUpon>SingleStartWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\waitingWindow.xaml.cs">
+      <DependentUpon>waitingWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controls\GameInfoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +141,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\waitingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -176,6 +183,8 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\frozen maze.jpg" />
+    <Resource Include="Images\olaf.png" />
+    <Resource Include="Images\olaf2.png" />
     <Content Include="Sounds\frozen.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,7 @@
         xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
         Title="MultiStartWindow" Height="300" Width="300">
-    <Grid>
+    <Grid Background="PaleGreen">
         <controls:GameInfoControl x:Name="GameInfo" HorizontalAlignment="Left" Height="135" Margin="32,105,0,0" VerticalAlignment="Top" Width="232"/>
         
         <TextBlock HorizontalAlignment="Left" Margin="32,28,0,0" TextWrapping="Wrap" Text="List Of Games:" VerticalAlignment="Top"/>

@@ -8,7 +8,7 @@
 
         mc:Ignorable="d"
         Title="SingleStartWindow" Height="180" Width="290" KeyDown="Window_KeyDown">
-    <Grid>
+    <Grid Background="LightGoldenrodYellow">
         <controls:GameInfoControl x:Name="GameInfo"/>
     </Grid>
 </Window>
