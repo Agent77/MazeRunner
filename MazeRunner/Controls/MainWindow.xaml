@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="MazeRunner.Controls.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MazeRunner.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="500">
+    <Grid Background="PaleTurquoise">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        
+            <Image Source="/Images/frozen maze.jpg" Grid.Row="1" Width="400" Stretch="Fill" />
+
+
+        <Button x:Name="single" Grid.Row="3" FontSize="30" Background="DodgerBlue" Click="SingleClick" Content="Single Player" Width="250"/>
+
+
+        <Button x:Name="multi" Grid.Row="5" FontSize="30" Background="DodgerBlue" Click="MultiClick" Content="Multi Player" Width="250"/>
+
+
+        <Button x:Name="settings" Grid.Row="7" FontSize="30" Background="DodgerBlue" Click="SettingsClick" Content="Settings" Width="250"/>
+        
+    </Grid>
+</UserControl>

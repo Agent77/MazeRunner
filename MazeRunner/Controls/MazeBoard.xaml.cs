@@ -1,5 +1,6 @@
 ﻿using MazeLib;
 using MazeRunner.ViewModels;
+using MazeRunner.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace MazeRunner.Controls
     public partial class MazeBoard : UserControl
     {
         //private MazeViewModel myVM;
+        private Image goalImg;
         private Image player;
         public Image Player
         {
@@ -35,6 +37,19 @@ namespace MazeRunner.Controls
                 player= value;
             }
         }
+
+        private bool finishedGame = false;
+        private bool FinishedGame {
+            get
+            {
+                return finishedGame;
+            }
+            set
+            {
+                finishedGame = value;
+            }
+                }
+
         public MazeBoard()
         {
             InitializeComponent();
@@ -52,9 +67,9 @@ namespace MazeRunner.Controls
             if (MazeString[r][c] == '0')
                 return Brushes.White;
             if (MazeString[r][c] == '*')
-                return Brushes.Green;
+                return Brushes.White;
             if (MazeString[r][c] == '#')
-                return Brushes.Yellow;
+                return Brushes.White;
             return Brushes.Black;
 
         }
@@ -106,13 +121,22 @@ namespace MazeRunner.Controls
                 yPlace = 0;
                 xPlace++;
             }
+            goalImg = new Image();
+            goalImg.Width = diff;
+            goalImg.Height = diff;
+            goalImg.Source = new BitmapImage(new Uri(@"/Images/castle.jpg", UriKind.RelativeOrAbsolute));            
+            Canvas.SetLeft(goalImg, GoalPos.Col * diff);
+            Canvas.SetTop(goalImg, GoalPos.Row * diff);
+            goalImg.Stretch = Stretch.Fill;
+            Board.Children.Add(goalImg);
             player = new Image();
             player.Width = diff;
             player.Height = diff;
-            player.Source = new BitmapImage(new Uri(@"/Images/elsa.jpg", UriKind.RelativeOrAbsolute));
+            player.Source = new BitmapImage(new Uri(@"/Images/elsa.png", UriKind.RelativeOrAbsolute));
             PlayerPosition = InitialPos;
             Canvas.SetLeft(player, PlayerPosition.Col*diff);
             Canvas.SetTop(player, PlayerPosition.Row*diff);
+            player.Stretch = Stretch.Fill;
             Board.Children.Add(player);
         }
 
@@ -178,21 +202,16 @@ namespace MazeRunner.Controls
             {
                 case Key.Left:
                     current.Col = playerPosition.Col - 1;
-                    if (!IsInBounds(current) || MazeString[playerPosition.Row][playerPosition.Col - 1] == '1')
+                    if (FinishedGame || !IsInBounds(current) || MazeString[playerPosition.Row][playerPosition.Col - 1] == '1')
                     {
                         break;
                     }
                     playerPosition.Col -= 1;
                     Canvas.SetLeft(Player, PlayerPosition.Col*diff);
-                    if (MazeString[playerPosition.Row][playerPosition.Col] == '#')
-                    {
-                       
-                    }
-
                     break;
                 case Key.Right:
                     current.Col = playerPosition.Col + 1;
-                    if (!IsInBounds(current) || MazeString[playerPosition.Row][playerPosition.Col + 1] == '1')
+                    if (FinishedGame || !IsInBounds(current) || MazeString[playerPosition.Row][playerPosition.Col + 1] == '1')
                     {
                         break;
                     }
@@ -201,7 +220,7 @@ namespace MazeRunner.Controls
                     break;
                 case Key.Up:
                     current.Row = playerPosition.Row - 1;
-                    if (!IsInBounds(current) || MazeString[playerPosition.Row-1][playerPosition.Col] == '1')
+                    if (FinishedGame || !IsInBounds(current) || MazeString[playerPosition.Row-1][playerPosition.Col] == '1')
                     {
                         break;
                     }
@@ -210,13 +229,19 @@ namespace MazeRunner.Controls
                     break;
                 case Key.Down:
                     current.Row = playerPosition.Row + 1;
-                    if (!IsInBounds(current) || MazeString[playerPosition.Row+1][playerPosition.Col] == '1')
+                    if (FinishedGame || !IsInBounds(current) || MazeString[playerPosition.Row+1][playerPosition.Col] == '1')
                     {
                         break;
                     }
                     playerPosition.Row += 1;
                     Canvas.SetTop(Player, PlayerPosition.Row*diff);
                     break;
+            }
+            if (MazeString[playerPosition.Row][playerPosition.Col] == '#')
+            {
+                FinishedGame = true;
+                FinishWindow fw = new FinishWindow();
+                fw.Show();
             }
         }
 
@@ -256,8 +281,18 @@ namespace MazeRunner.Controls
             DependencyProperty.Register("Cols", typeof(int), typeof(MazeBoard), new PropertyMetadata(0));
 
 
+        public void RestartGame()
+        {
+            int diff = 300 / Cols;
+            PlayerPosition = InitialPos;
+            Canvas.SetLeft(player, PlayerPosition.Col * diff);
+            Canvas.SetTop(player, PlayerPosition.Row * diff);
+        }
 
-
+        public void BackToMain()
+        {
+            
+        }
 
     }
 }

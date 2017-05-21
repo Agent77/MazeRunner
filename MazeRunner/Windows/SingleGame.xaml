@@ -6,20 +6,25 @@
         xmlns:local="clr-namespace:MazeRunner.Windows"
         xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
-        Title="SingleGame" Height="350" Width="350">
+        Title="{Binding VM_Name}" Height="394" Width="320">
 
-    <Canvas>
-        <Viewbox Canvas.Top="0" Canvas.Left="35">
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnmain" Click="btnmain_Click" Margin="5" Padding="5" Content="Main Menu"/>
-                <Button x:Name="btnRestart" Click="btnRestart_Click" Margin="5" Padding="5" Content="Restart Game"/>
-                <Button x:Name="btnSolve" Click="btnSolve_Click" Margin="5" Padding="5" Content="Restart Game"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="main" Click="Main_Click" Margin="5" Padding="5" Content="Main Menu"/>
+                <Button x:Name="Restart" Click="Restart_Click" Margin="5" Padding="5" Content="Restart Game"/>
+                <Button x:Name="Solve" Click="Solve_Click" Margin="5" Padding="5" Content="Solve"/>
             </StackPanel>
         </Viewbox>
-        <Viewbox Canvas.Top="40" Canvas.Left="10">
-        <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="Black" BorderThickness="2" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="266" Width="322" Canvas.Left="10" Canvas.Top="43"/>
-        </Viewbox>
-    </Canvas>
+
+        <Viewbox Grid.Row="1">
+            <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="Orange" BorderThickness="2" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="304" Width="304"/>
+            </Viewbox>
+    </Grid>
 
 
 </Window>

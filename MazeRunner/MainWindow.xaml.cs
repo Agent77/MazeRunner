@@ -27,7 +27,7 @@ namespace MazeRunner
            
         }
 
-        private void SingleClick(object sender, RoutedEventArgs e)
+        /*private void SingleClick(object sender, RoutedEventArgs e)
         {
             SingleStartWindow n = new SingleStartWindow();
             n.Show();
@@ -42,6 +42,6 @@ namespace MazeRunner
         private void SettingsClick(object sender, RoutedEventArgs e)
         {
 
-        }
+        }*/
     }
 }

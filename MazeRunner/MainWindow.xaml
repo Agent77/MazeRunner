@@ -4,11 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeRunner"
+        xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
-        Title="The Maze Runner!" Height="350" Width="525">
-    <Canvas Background="DarkOliveGreen">
-        <Button x:Name="single" Canvas.Left="135" Canvas.Top="120" FontSize="30" Background="LightBlue" Click="SingleClick" Content="Single Player" Width="250"/>
-        <Button x:Name="multi" Canvas.Left="135" Canvas.Top="170" FontSize="30" Background="LightBlue" Click="MultiClick" Content="Multi Player" Width="250"/>
-        <Button x:Name="settings" Canvas.Left="135" Canvas.Top="220" FontSize="30" Background="LightBlue" Click="SettingsClick" Content="Settings" Width="250"/>
-    </Canvas>
+        Title="Frozen Maze!" Height="400" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0">
+            <controls:MainWindow Height="504" Width="504" />
+        </Viewbox>
+    </Grid>
+
 </Window>

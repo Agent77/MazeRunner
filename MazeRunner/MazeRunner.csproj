@@ -65,6 +65,9 @@
       <DependentUpon>GameInfoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\IMazeBoard.cs" />
+    <Compile Include="Controls\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClientCommunicator.cs" />
     <Compile Include="Models\IMazeModel.cs" />
     <Compile Include="Models\MazeModel.cs" />
@@ -73,6 +76,9 @@
     <Compile Include="ViewModels\MazeViewModel.cs" />
     <Compile Include="ViewModels\MultiViewModel.cs" />
     <Compile Include="ViewModels\SingleViewModel.cs" />
+    <Compile Include="Windows\FinishWindow.xaml.cs">
+      <DependentUpon>FinishWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MultiGame.xaml.cs">
       <DependentUpon>MultiGame.xaml</DependentUpon>
     </Compile>
@@ -86,6 +92,10 @@
       <DependentUpon>SingleStartWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\GameInfoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\FinishWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MultiGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,7 +167,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\elsa.jpg" />
+    <Resource Include="Images\anna.png" />
+    <Resource Include="Images\elsa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\castle.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\frozen maze.jpg" />
+    <Content Include="Sounds\frozen.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
