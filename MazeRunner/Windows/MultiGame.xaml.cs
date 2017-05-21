@@ -39,20 +39,21 @@ namespace MazeRunner.Windows
             MultiMazeModel tempModel = myVM.MyModel as MultiMazeModel;
             tempModel.OpponentMoved += delegate (Object sender, Key e)
             {
-                OpponentBoard.MovePlayer(e);
+                this.Dispatcher.Invoke(() =>
+                {
+                    OpponentBoard.MovePlayer(e);
+                });
+
             };
-             myVM.VM_Maze = myVM.MyModel.MazeString();
-
-
-            
+            myVM.VM_Maze = myVM.MyModel.MazeString();
         }
 
 
 
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
-            Board.DrawBoard();
-            OpponentBoard.DrawBoard();
+            Board.DrawBoard(false);
+            OpponentBoard.DrawBoard(true);
 
         }
 

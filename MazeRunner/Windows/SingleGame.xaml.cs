@@ -51,7 +51,7 @@ namespace MazeRunner.Windows
 
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
-            Board.DrawBoard();
+            Board.DrawBoard(false);
             
 
         }

@@ -37,6 +37,7 @@ namespace MazeRunner.Controls
                 player= value;
             }
         }
+        private bool isOpponent;
 
         private bool finishedGame = false;
         private bool FinishedGame {
@@ -92,7 +93,7 @@ namespace MazeRunner.Controls
             m.mstring = (string[])e.NewValue;
         }
 
-        public void DrawBoard()
+        public void DrawBoard(bool competitor)
         {
 
             //loop
@@ -101,6 +102,7 @@ namespace MazeRunner.Controls
             int diff = 300/Cols;
             int xPlace = 0;
             int yPlace = 0;
+            isOpponent = competitor;
             for (x = 0; xPlace < Cols; x += diff )
             {
                 for (y = 0; yPlace < Rows; y += diff)
@@ -131,7 +133,14 @@ namespace MazeRunner.Controls
             player = new Image();
             player.Width = diff;
             player.Height = diff;
-            player.Source = new BitmapImage(new Uri(@"/Images/elsa.png", UriKind.RelativeOrAbsolute));
+            if (isOpponent)
+            {
+                player.Source = new BitmapImage(new Uri(@"/Images/anna.png", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                player.Source = new BitmapImage(new Uri(@"/Images/elsa.png", UriKind.RelativeOrAbsolute));
+            }
             PlayerPosition = InitialPos;
             Canvas.SetLeft(player, PlayerPosition.Col*diff);
             Canvas.SetTop(player, PlayerPosition.Row*diff);
@@ -236,7 +245,7 @@ namespace MazeRunner.Controls
                     Canvas.SetTop(Player, PlayerPosition.Row*diff);
                     break;
             }
-            if (MazeString[playerPosition.Row][playerPosition.Col] == '#')
+            if (MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent==false)
             {
                 FinishedGame = true;
                 FinishWindow fw = new FinishWindow();

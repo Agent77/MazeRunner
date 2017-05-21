@@ -54,24 +54,6 @@ namespace MazeRunner.Controls
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("Cols", typeof(int), typeof(GameInfoControl), new PropertyMetadata(0));
 
-        /*private string gameName;
-        public string GameName
-        {
-            get { return (string)GetValue(GameNameProperty); }
-            set { SetValue(GameNameProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MazeString.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty GameNameProperty =
-            DependencyProperty.Register("GameName", typeof(string), typeof(MazeBoard), new PropertyMetadata(SetName));
-
-        private static void SetName(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            MazeBoard m = (MazeBoard)d;
-            m.GameName = (string)e.NewValue;
-
-        }*/
-
 
     }
 }

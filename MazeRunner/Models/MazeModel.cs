@@ -220,30 +220,6 @@ namespace MazeRunner.Models
             cols = c;
         }
 
-      
-            public Position MovePlayer(string direction)
-            {
-                Position currPos = PlayerLocation;
-                switch (direction)
-                {
-                    case "Up":
-                        currPos.Row = PlayerLocation.Row - 1;
-                        PlayerLocation = currPos;
-                        break;
-                    case "Down":
-                        currPos.Row = PlayerLocation.Row + 1;
-                        PlayerLocation = currPos;
-                        break;
-                    case "Left":
-                        currPos.Col = PlayerLocation.Col - 1;
-                        PlayerLocation = currPos;
-                        break;
-                    case "Right":
-                        currPos.Col = PlayerLocation.Col + 1;
-                        PlayerLocation = currPos;
-                        break;
-                }
-            return currPos;
-        }
+     
     }
 }

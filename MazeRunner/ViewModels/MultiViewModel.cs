@@ -58,9 +58,10 @@ namespace MazeRunner.ViewModels
                 gameList = value;
             }
         }
-        public Position MovePlayer(string direction)
+        public void MovePlayer(string direction)
         {
-            return MyModel.MovePlayer(direction);
+            MultiMazeModel m = MyModel as MultiMazeModel;
+             m.MovePlayer(direction);
         }
 
         public void MoveEnemy(Position p)
