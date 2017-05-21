@@ -26,14 +26,16 @@ namespace MazeRunner.Windows
             this.Loaded += win_loaded;
         }
 
+        public SoundPlayer sPlayer = new SoundPlayer(MazeRunner.Properties.Resources.frozen);
+
         private void win_loaded(object sender, RoutedEventArgs e)
         {
             /*MediaPlayer player = new MediaPlayer();
             player.Open(new Uri(@"\Sounds\frozen.mp3", UriKind.RelativeOrAbsolute));
             player.Play();*/
 
-            SoundPlayer player = new SoundPlayer(MazeRunner.Properties.Resources.frozen);
-            player.Play();
+            
+            sPlayer.Play();
 
             /*SoundPlayer player = new SoundPlayer(@"D:\Visual Projects\MazeRunner\MazeRunner\Sounds\frozen.wav");
             player.Play();*/
