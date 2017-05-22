@@ -92,7 +92,9 @@ namespace MazeRunner.Windows
 
         private void Solve_Click(object sender, RoutedEventArgs e)
         {
-           
+           string solution = myVM.MyModel.SolveMaze();
+           Board.SolveMaze(solution);
+
         }
     }
 }

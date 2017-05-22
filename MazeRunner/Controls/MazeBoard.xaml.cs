@@ -99,17 +99,18 @@ namespace MazeRunner.Controls
             //loop
             int x = 0;
             int y = 0;
-            int diff = 300/Cols;
+            int rowsDiff = 300/Rows;
+            int colsDiff = 300 / Cols;
             int xPlace = 0;
             int yPlace = 0;
             isOpponent = competitor;
-            for (x = 0; xPlace < Cols; x += diff )
+            for (x = 0; xPlace < Cols; x += colsDiff )
             {
-                for (y = 0; yPlace < Rows; y += diff)
+                for (y = 0; yPlace < Rows; y += rowsDiff)
                 {
                     Path p = new Path();
-                    RectangleGeometry r = new RectangleGeometry(new Rect(y, x, diff, diff));
-                    SolidColorBrush b = GetColour(xPlace, yPlace);
+                    RectangleGeometry r = new RectangleGeometry(new Rect(x,y,colsDiff, rowsDiff));
+                    SolidColorBrush b = GetColour(yPlace, xPlace);
                     p.Fill = b;
                     p.Data = r;
                     //p.Stroke = Brushes.Green;
@@ -123,16 +124,16 @@ namespace MazeRunner.Controls
                 xPlace++;
             }
             goalImg = new Image();
-            goalImg.Width = diff;
-            goalImg.Height = diff;
+            goalImg.Width = colsDiff;
+            goalImg.Height = rowsDiff;
             goalImg.Source = new BitmapImage(new Uri(@"/Images/castle.jpg", UriKind.RelativeOrAbsolute));            
-            Canvas.SetLeft(goalImg, GoalPos.Col * diff);
-            Canvas.SetTop(goalImg, GoalPos.Row * diff);
+            Canvas.SetLeft(goalImg, GoalPos.Col * colsDiff);
+            Canvas.SetTop(goalImg, GoalPos.Row * rowsDiff);
             goalImg.Stretch = Stretch.Fill;
             Board.Children.Add(goalImg);
             player = new Image();
-            player.Width = diff;
-            player.Height = diff;
+            player.Width = colsDiff;
+            player.Height = rowsDiff;
             if (isOpponent)
             {
                 player.Source = new BitmapImage(new Uri(@"/Images/anna.png", UriKind.RelativeOrAbsolute));
@@ -142,8 +143,8 @@ namespace MazeRunner.Controls
                 player.Source = new BitmapImage(new Uri(@"/Images/elsa.png", UriKind.RelativeOrAbsolute));
             }
             PlayerPosition = InitialPos;
-            Canvas.SetLeft(player, PlayerPosition.Col*diff);
-            Canvas.SetTop(player, PlayerPosition.Row*diff);
+            Canvas.SetLeft(player, PlayerPosition.Col* colsDiff);
+            Canvas.SetTop(player, PlayerPosition.Row*rowsDiff);
             player.Stretch = Stretch.Fill;
             Board.Children.Add(player);
         }
@@ -212,7 +213,8 @@ namespace MazeRunner.Controls
                 //lw.Show();
                 return -1;
             }
-            int diff = 300 / Cols;
+            int rowsDiff = 300 / Rows;
+            int colsDiff = 300 / Cols;
             Position current = PlayerPosition;
             //Canvas.SetLeft(Brushes.White, PlayerPosition.Row);
             switch (k)
@@ -224,7 +226,7 @@ namespace MazeRunner.Controls
                         break;
                     }
                     playerPosition.Col -= 1;
-                    Canvas.SetLeft(Player, PlayerPosition.Col*diff);
+                    Canvas.SetLeft(Player, PlayerPosition.Col*colsDiff);
                     break;
                 case Key.Right:
                     current.Col = playerPosition.Col + 1;
@@ -233,7 +235,7 @@ namespace MazeRunner.Controls
                         break;
                     }
                     playerPosition.Col += 1;
-                    Canvas.SetLeft(Player, PlayerPosition.Col*diff);
+                    Canvas.SetLeft(Player, PlayerPosition.Col* colsDiff);
                     break;
                 case Key.Up:
                     current.Row = playerPosition.Row - 1;
@@ -242,7 +244,7 @@ namespace MazeRunner.Controls
                         break;
                     }
                     playerPosition.Row -= 1;
-                    Canvas.SetTop(Player, PlayerPosition.Row*diff);
+                    Canvas.SetTop(Player, PlayerPosition.Row*rowsDiff);
                     break;
                 case Key.Down:
                     current.Row = playerPosition.Row + 1;
@@ -251,7 +253,7 @@ namespace MazeRunner.Controls
                         break;
                     }
                     playerPosition.Row += 1;
-                    Canvas.SetTop(Player, PlayerPosition.Row*diff);
+                    Canvas.SetTop(Player, PlayerPosition.Row*rowsDiff);
                     break;
             }
             if (MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent==false)
@@ -259,9 +261,6 @@ namespace MazeRunner.Controls
                 FinishedGame = true;
                 FinishWindow fw = new FinishWindow();
                 fw.Show();
-                //Debug d = new Debug();
-                //d.SetText("Player arrived, returning 0");
-                //d.Show();
                 return 0;
             }
             if(MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent)
@@ -312,7 +311,8 @@ namespace MazeRunner.Controls
        
         public void RestartGame()
         {
-            int diff = 300 / Cols;
+            int rowsDiff = 300 / Rows;
+            int colsDiff = 300 / Cols;
             PlayerPosition = InitialPos;
             Canvas.SetLeft(player, PlayerPosition.Col * diff);
             Canvas.SetTop(player, PlayerPosition.Row * diff);
@@ -327,5 +327,27 @@ namespace MazeRunner.Controls
             
         }
 
+        public void SolveMaze(string solution)
+        {
+            for(int i=0; i<solution.Length; i++)
+            {
+                switch (solution[i])
+                {
+                    case '0':
+                        MovePlayer(Key.Up);
+                        break;
+                    case '1':
+                        MovePlayer(Key.Right);
+                        break;
+                    case '2':
+                         MovePlayer(Key.Left);
+                        break;
+                    case '3':
+                        MovePlayer(Key.Down);
+                        break;
+                }
+                //System.Threading.Thread.Sleep(1000);
+            }
+        }
     }
 }
