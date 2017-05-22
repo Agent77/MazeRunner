@@ -35,6 +35,7 @@ namespace MazeRunner.Models
         void SendMaze(string action);
         string GetMaze();
         string[] MazeString();
+        string SolveMaze();
         void SetRows(int r);
         void SetCols(int c);
        // Position MovePlayer(string direction);

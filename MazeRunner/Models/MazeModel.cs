@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -220,6 +221,18 @@ namespace MazeRunner.Models
             cols = c;
         }
 
+        public string SolveMaze()
+        {
+            string algorithm = ConfigurationManager.AppSettings["algorithm"];
+            string s = "solve";
+            s += " " + Name + " " + "1";
+            TcpMessenger.Write(s);
+            string solution = TcpMessenger.read();
+            string[] sol1 = solution.Split(',');
+            string[] sol2 = sol1[1].Split(':');
+            string[] sol3 = sol2[1].Split('"');
+            return sol3[1];
+        }
      
     }
 }

@@ -2,6 +2,7 @@
 using MazeRunner.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,9 @@ namespace MazeRunner.Windows
             m.Join();
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
+            
+           /* mg.Board.Rows = mg.OpponentBoard.Rows;
+            mg.Board.Cols = mg.OpponentBoard.Cols;*/
             mg.Show();
             this.Close();
         }

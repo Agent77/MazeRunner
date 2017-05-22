@@ -142,8 +142,10 @@ namespace MazeRunner.ViewModels
             }
         }
 
-
-
+        public string SolveMaze()
+        {
+            return MyModel.SolveMaze();
+        }
      
 
         /*public void MovePlayer(string direction)
