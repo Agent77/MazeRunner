@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace MazeRunner.Controls
 {
@@ -314,8 +315,8 @@ namespace MazeRunner.Controls
             int rowsDiff = 300 / Rows;
             int colsDiff = 300 / Cols;
             PlayerPosition = InitialPos;
-            Canvas.SetLeft(player, PlayerPosition.Col * diff);
-            Canvas.SetTop(player, PlayerPosition.Row * diff);
+            Canvas.SetLeft(player, PlayerPosition.Col * colsDiff);
+            Canvas.SetTop(player, PlayerPosition.Row * rowsDiff);
             if (finishedGame)
             {
                 finishedGame = false;
@@ -329,25 +330,43 @@ namespace MazeRunner.Controls
 
         public void SolveMaze(string solution)
         {
-            for(int i=0; i<solution.Length; i++)
+
+            CharEnumerator solEnum = solution.GetEnumerator();
+            DispatcherTimer timer = new DispatcherTimer();
+
+            timer.Tick += new EventHandler(delegate (object s, EventArgs ev)
             {
-                switch (solution[i])
+                while(solEnum.MoveNext())
                 {
-                    case '0':
+                    if(solEnum.Current == '0')
+                    {
                         MovePlayer(Key.Up);
-                        break;
-                    case '1':
+                    }
+
+                    if(solEnum.Current == '1')
+                    {
                         MovePlayer(Key.Right);
-                        break;
-                    case '2':
-                         MovePlayer(Key.Left);
-                        break;
-                    case '3':
+                    }
+
+                    if (solEnum.Current == '2')
+                    {
+                        MovePlayer(Key.Left);
+                    }
+
+                    if (solEnum.Current == '3')
+                    {
                         MovePlayer(Key.Down);
-                        break;
+                    }
                 }
-                //System.Threading.Thread.Sleep(1000);
-            }
+               
+            });
+
+            timer.Interval = new TimeSpan(1000);
+            timer.Start();        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
