@@ -47,6 +47,7 @@ namespace MazeRunner.Models
             MyMaze = Maze.FromJSON(maze);
             InitialPos = MyMaze.InitialPos;
             GoalPos = MyMaze.GoalPos;
+
             
             new Task(() =>
             {

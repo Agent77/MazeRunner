@@ -170,7 +170,7 @@ namespace MazeRunner.Models
             string s = "close";
             s += " "+ Name;
             TcpMessenger.Write(s);
-            TcpMessenger.read();
+            //TcpMessenger.read();
             TcpMessenger.disconnect();
         }
 

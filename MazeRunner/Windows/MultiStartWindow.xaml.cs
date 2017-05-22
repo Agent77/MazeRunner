@@ -49,6 +49,7 @@ namespace MazeRunner.Windows
             waitingWindow ww = new waitingWindow();
             ww.Show();
             myVM.MyModel.SendMaze("start");
+           // ww.Close();
             MultiMazeModel m = myVM.MyModel as MultiMazeModel;
             m.BeginMoves();
             

@@ -55,10 +55,10 @@ namespace ServerSide
             //stream for this client
             NetworkStream net = client.GetStream();
             StreamWriter st = new StreamWriter(net);
-            str = "Closing Game: " + Name;
-            st.WriteLine(str);
+            //str = "Closing Game: " + Name;
+           // st.WriteLine(str);
            // st.WriteLine("#");
-            st.Flush();
+            //st.Flush();
             return "CLOSE";
         }
     }

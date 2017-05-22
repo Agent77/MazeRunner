@@ -34,6 +34,8 @@ namespace MazeRunner.Windows
 
         public void SetVM(MazeViewModel m)
         {
+           // Debug d = new Debug();
+           // d.Show();
             myVM = m as MultiViewModel;
             this.DataContext = myVM;
             MultiMazeModel tempModel = myVM.MyModel as MultiMazeModel;
@@ -41,16 +43,25 @@ namespace MazeRunner.Windows
             {
 
                 int close = 10;
+               // d.Close();
                 this.Dispatcher.Invoke(() =>
                 {
                   close = OpponentBoard.MovePlayer(e);
+
                     if (close < 0)
                     {
                         LoserWindow lw = new LoserWindow();
                         lw.Show();
+                        myVM.MyModel.Disconnect();
+                        MainMenu_Click(null, null);
+                        lw.Close();
+                       // this.Close();
                     }
                     if (close == 0)
                     {
+                       // Debug d2 = new Debug();
+                       // d2.SetText("In close == 0");
+                        //d2.Show();
                         myVM.MyModel.Disconnect();
                     }
                 });
