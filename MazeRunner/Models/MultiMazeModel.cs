@@ -94,7 +94,7 @@ namespace MazeRunner.Models
             response = response.Replace("]", "");
             response = response.Replace("\"", "");
             string[] games = response.Split(',');
-            
+            games = games.Take(games.Count() - 1).ToArray();
             List<string> list = games.ToList<string>();
             gameList = new ObservableCollection<string>(list);
             return gameList;
