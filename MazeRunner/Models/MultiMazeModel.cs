@@ -110,8 +110,6 @@ namespace MazeRunner.Models
             set
             {
                 gameList = value;
-                //gameList = GetListOfGames();
-                //NotifyPropertyChanged("GameList");
             }
         }
 

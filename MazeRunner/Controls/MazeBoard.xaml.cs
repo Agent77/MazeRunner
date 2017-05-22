@@ -362,7 +362,8 @@ namespace MazeRunner.Controls
             });
 
             timer.Interval = new TimeSpan(1000);
-            timer.Start();        }
+            timer.Start();
+        }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
