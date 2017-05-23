@@ -47,7 +47,6 @@ namespace MazeRunner.Models
 
         void Connect();
         void Disconnect();
-        //start();  
     }
 
 }
