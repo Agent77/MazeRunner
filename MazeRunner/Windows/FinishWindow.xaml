@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MazeRunner.Windows"
         mc:Ignorable="d"
-        Title="Winner!" Height="300" Width="300">
+        Title="Winner!" WindowStartupLocation="CenterOwner" Height="300" Width="300">
     <Grid Loaded="win_loaded">
         <Image Source="/Images/castle.jpg" Stretch="Fill"/>
-        <TextBlock Text=" Congratulation you made it!" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Margin="16,98,17,135" Width="259" Height="36"/>
+        <TextBlock TextAlignment="Center" FontStyle="Italic" FontWeight="ExtraBlack" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Margin="17,99,17.333,106.667" Width="259" Height="90"><Run Text=" Congratulations!"/><LineBreak/><Run Text=" you made it!"/></TextBlock>
     </Grid>
 </Window>

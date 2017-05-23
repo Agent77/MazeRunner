@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
-        Title="Multi Player Maze!" Height="300" Width="300">
+        Title="Multi Player Maze!" WindowStartupLocation="CenterOwner" Height="300" Width="300">
     <Grid Background="DeepSkyBlue">
         <controls:GameInfoControl x:Name="GameInfo" HorizontalAlignment="Left" Height="135" Margin="32,105,0,0" VerticalAlignment="Top" Width="232"/>
-        
-        <TextBlock HorizontalAlignment="Left" Margin="32,28,0,0" TextWrapping="Wrap" Text="List Of Games:" VerticalAlignment="Top"/>
-        <Button Content="Join Game" HorizontalAlignment="Left" Margin="126,67,0,0" VerticalAlignment="Top" Width="75" Click="JoinClicked"/>
-        <ComboBox x:Name="GameList" ItemsSource="{Binding VM_GameList}" SelectedItem="{Binding VM_Name}" HorizontalAlignment="Left" Margin="144,28,0,0" VerticalAlignment="Top" Width="120" Loaded="ComboBox_Loaded"/>
+
+        <TextBlock FontStyle="Italic" FontWeight="ExtraBlack" HorizontalAlignment="Left" Margin="32,28,0,0" TextWrapping="Wrap" Text="List Of Games:" VerticalAlignment="Top"/>
+        <Button Content="Join Game" FontStyle="Italic" FontWeight="ExtraBlack" HorizontalAlignment="Left" Margin="126,67,0,0" VerticalAlignment="Top" Width="75" Click="JoinClicked"/>
+        <ComboBox x:Name="GameList" FontStyle="Italic" FontWeight="ExtraBlack" ItemsSource="{Binding VM_GameList}" SelectedItem="{Binding VM_Name}" HorizontalAlignment="Left" Margin="144,28,0,0" VerticalAlignment="Top" Width="120" Loaded="ComboBox_Loaded"/>
 
     </Grid>
 </Window>

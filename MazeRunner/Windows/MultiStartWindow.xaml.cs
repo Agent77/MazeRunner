@@ -41,9 +41,9 @@ namespace MazeRunner.Windows
             m.Join();
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
-            
-           /* mg.Board.Rows = mg.OpponentBoard.Rows;
-            mg.Board.Cols = mg.OpponentBoard.Cols;*/
+
+            /* mg.Board.Rows = mg.OpponentBoard.Rows;
+             mg.Board.Cols = mg.OpponentBoard.Cols;*/
             mg.Show();
             this.Close();
         }

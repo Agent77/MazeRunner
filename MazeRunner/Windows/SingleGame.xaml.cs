@@ -52,15 +52,12 @@ namespace MazeRunner.Windows
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
             Board.DrawBoard(false);
-            
-
         }
 
         private void Board_KeyDown(object sender, KeyEventArgs e)
         {
             Key k = e.Key;
             Board.MovePlayer(k);
-           
         }
 
         private void Main_Click(object sender, RoutedEventArgs e)
