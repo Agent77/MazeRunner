@@ -217,7 +217,8 @@ namespace MazeRunner.Controls
             int rowsDiff = 300 / Rows;
             int colsDiff = 300 / Cols;
             Position current = PlayerPosition;
-            //Canvas.SetLeft(Brushes.White, PlayerPosition.Row);
+           
+          //  Canvas.SetLeft(Brushes.White, PlayerPosition.Row);
             switch (k)
             {
                 case Key.Left:
@@ -266,9 +267,9 @@ namespace MazeRunner.Controls
             }
             if(MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent)
             {
-                Debug d = new Debug();
-                d.SetText("OPP arrived, returning 0");
-                d.Show();
+               // Debug d = new Debug();
+               // d.SetText("OPP arrived, returning 0");
+               // d.Show();
                 return 0;
             }
             return 1;
@@ -334,16 +335,16 @@ namespace MazeRunner.Controls
             CharEnumerator solEnum = solution.GetEnumerator();
             DispatcherTimer timer = new DispatcherTimer();
 
-            timer.Tick += new EventHandler(delegate (object s, EventArgs ev)
+            timer.Tick += delegate (object s, EventArgs ev)
             {
-                while(solEnum.MoveNext())
+                if (solEnum.MoveNext())
                 {
-                    if(solEnum.Current == '0')
+                    if (solEnum.Current == '0')
                     {
                         MovePlayer(Key.Up);
                     }
 
-                    if(solEnum.Current == '1')
+                    if (solEnum.Current == '1')
                     {
                         MovePlayer(Key.Right);
                     }
@@ -357,11 +358,15 @@ namespace MazeRunner.Controls
                     {
                         MovePlayer(Key.Down);
                     }
+                } else
+                {
+                    timer.Stop();
                 }
-               
-            });
 
-            timer.Interval = new TimeSpan(1000);
+            };
+            
+
+            timer.Interval =  TimeSpan.FromSeconds(0.1);
             timer.Start();
         }
 

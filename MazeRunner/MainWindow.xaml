@@ -24,13 +24,13 @@
         <Image Source="/Images/frozen maze.jpg" Grid.Row="1" Width="400" Stretch="Fill" />
 
 
-        <Button x:Name="single" Grid.Row="3" FontSize="30" Background="DodgerBlue" Click="SingleClick" Content="Single Player" Width="250"/>
+        <Button x:Name="single" FontStyle="Italic" FontWeight="ExtraBlack" Grid.Row="3" FontSize="30" Background="DodgerBlue" Click="SingleClick" Content="Single Player" Width="250"/>
 
 
-        <Button x:Name="multi" Grid.Row="5" FontSize="30" Background="DodgerBlue" Click="MultiClick" Content="Multi Player" Width="250"/>
+        <Button x:Name="multi" FontStyle="Italic" FontWeight="ExtraBlack" Grid.Row="5" FontSize="30" Background="DodgerBlue" Click="MultiClick" Content="Multi Player" Width="250"/>
 
 
-        <Button x:Name="settings" Grid.Row="7" FontSize="30" Background="DodgerBlue" Click="SettingsClick" Content="Settings" Width="250"/>
+        <Button x:Name="settings" FontStyle="Italic" FontWeight="ExtraBlack" Grid.Row="7" FontSize="30" Background="DodgerBlue" Click="SettingsClick" Content="Settings" Width="250"/>
 
     </Grid>
 

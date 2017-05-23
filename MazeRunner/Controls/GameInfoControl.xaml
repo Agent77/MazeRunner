@@ -17,12 +17,12 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Padding="3" Margin="3" >Maze name:</TextBlock>
-        <TextBox x:Name="txtMazeName" Grid.Column="2" Padding="3" Margin="3" Text="{Binding VM_Name}"></TextBox>
-        <TextBlock Grid.Row="1" Padding="3" Margin="3">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="1" Grid.Column="2" Padding="3" Margin="3" Text="{Binding VM_Rows}"></TextBox>
-        <TextBlock Grid.Row="2" Padding="3" Margin="3">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="2" Grid.Column="2" Padding="3" Margin="3" Text="{Binding VM_Cols}"></TextBox>
-        <Button x:Name="btnStart" Grid.Row="3" HorizontalAlignment="Center" Grid.ColumnSpan="2" Click="StartBtnClick" Margin="5" Padding="5">Start Game</Button>
+        <TextBlock FontStyle="Italic" FontWeight="ExtraBlack" Grid.Row="0" Padding="3" Margin="3" >Maze name:</TextBlock>
+        <TextBox FontStyle="Italic" FontWeight="ExtraBlack" x:Name="txtMazeName" Grid.Column="2" Padding="3" Margin="3" Text="{Binding VM_Name}"></TextBox>
+        <TextBlock FontStyle="Italic" FontWeight="ExtraBlack" Grid.Row="1" Padding="3" Margin="3">Maze rows:</TextBlock>
+        <TextBox FontStyle="Italic" FontWeight="ExtraBlack" x:Name="txtRows" Grid.Row="1" Grid.Column="2" Padding="3" Margin="3" Text="{Binding VM_Rows}"></TextBox>
+        <TextBlock FontStyle="Italic" FontWeight="ExtraBlack" Grid.Row="2" Padding="3" Margin="3">Maze columns:</TextBlock>
+        <TextBox FontStyle="Italic" FontWeight="ExtraBlack" x:Name="txtCols" Grid.Row="2" Grid.Column="2" Padding="3" Margin="3" Text="{Binding VM_Cols}"></TextBox>
+        <Button FontStyle="Italic" FontWeight="ExtraBlack" x:Name="btnStart" Grid.Row="3" HorizontalAlignment="Center" Grid.ColumnSpan="2" Click="StartBtnClick" Margin="5" Padding="5">Start Game</Button>
     </Grid>
 </UserControl>

@@ -225,7 +225,14 @@ namespace MazeRunner.Models
         {
             string algorithm = ConfigurationManager.AppSettings["algorithm"];
             string s = "solve";
-            s += " " + Name + " " + "1";
+            if(algorithm == "BFS")
+            {
+                s += " " + Name + " " + "0";
+
+            } else
+            {
+                s += " " + Name + " " + "1";
+            }
             TcpMessenger.Write(s);
             string solution = TcpMessenger.read();
             string[] sol1 = solution.Split(',');

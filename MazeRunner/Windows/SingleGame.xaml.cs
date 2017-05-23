@@ -94,7 +94,6 @@ namespace MazeRunner.Windows
         {
            string solution = myVM.MyModel.SolveMaze();
            Board.SolveMaze(solution);
-
         }
     }
 }
