@@ -15,9 +15,9 @@
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="main" Click="Main_Click" Margin="5" Padding="5" Content="Main Menu"/>
-                <Button x:Name="Restart" Click="Restart_Click" Margin="5" Padding="5" Content="Restart Game"/>
-                <Button x:Name="Solve" Click="Solve_Click" Margin="5" Padding="5" Content="Solve"/>
+                <Button x:Name="main" FontStyle="Italic" FontWeight="ExtraBlack" Click="Main_Click" Margin="5" Padding="5" Content="Main Menu"/>
+                <Button x:Name="Restart" FontStyle="Italic" FontWeight="ExtraBlack" Click="Restart_Click" Margin="5" Padding="5" Content="Restart Game"/>
+                <Button x:Name="Solve" FontStyle="Italic" FontWeight="ExtraBlack" Click="Solve_Click" Margin="5" Padding="5" Content="Solve"/>
             </StackPanel>
         </Viewbox>
 
