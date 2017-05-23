@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MazeRunner.Windows"
         xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
-        Title="{Binding VM_Name}" Height="394" Width="320">
+        Title="{Binding VM_Name}" Height="390" Width="320">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="0">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="PaleTurquoise">
                 <Button x:Name="main" FontStyle="Italic" FontWeight="ExtraBlack" Click="Main_Click" Margin="5" Padding="5" Content="Main Menu"/>
                 <Button x:Name="Restart" FontStyle="Italic" FontWeight="ExtraBlack" Click="Restart_Click" Margin="5" Padding="5" Content="Restart Game"/>
                 <Button x:Name="Solve" FontStyle="Italic" FontWeight="ExtraBlack" Click="Solve_Click" Margin="5" Padding="5" Content="Solve"/>
@@ -22,7 +22,7 @@
         </Viewbox>
 
         <Viewbox Grid.Row="1">
-            <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="Orange" BorderThickness="2" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="304" Width="304"/>
+            <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="Blue" BorderThickness="2" Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="304" Width="304"/>
             </Viewbox>
     </Grid>
 

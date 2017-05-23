@@ -13,7 +13,7 @@
         <Button Name="MainMenu" FontStyle="Italic" FontWeight="ExtraBold" Background="AliceBlue" Content="Main Menu" Height="20" Width="80" VerticalAlignment="Top" Margin="306,24,306,0" Click="MainMenu_Click"/>
         <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="blue" BorderThickness="2"  Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="304" Width="304" Margin="16,55,372,10"/>
         <controls:MazeBoard x:Name="OpponentBoard" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="Blue" BorderThickness="2" Height="304" Width="304" Margin="371,55,17,10"/>
-        <TextBlock FontWeight="ExtraBold" FontStyle="Italic" HorizontalAlignment="Left" Height="23" Margin="27,30,0,0" TextWrapping="Wrap" Text="Your Maze" VerticalAlignment="Top" TextAlignment="Center" Width="120"/>
+        <TextBlock FontWeight="ExtraBold" FontStyle="Italic" HorizontalAlignment="Left" Height="23" Margin="27,30,0,0" TextWrapping="Wrap" Text="Your Maze" VerticalAlignment="Top"  Width="120"/>
         <TextBlock FontWeight="ExtraBold" FontStyle="Italic" HorizontalAlignment="Left" Height="23" Margin="566,30,0,0" TextWrapping="Wrap" Text="Opponent's Maze" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
 
     </Grid>

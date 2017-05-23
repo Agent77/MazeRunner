@@ -53,8 +53,8 @@ namespace MazeRunner.Windows
                         LoserWindow lw = new LoserWindow();
                         lw.Show();
                         myVM.MyModel.Disconnect();
-                        MainMenu_Click(null, null);
-                        lw.Close();
+                        //MainMenu_Click(null, null);
+                        //lw.Close();
                        // this.Close();
                     }
                     if (close == 0)
