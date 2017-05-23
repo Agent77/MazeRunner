@@ -122,21 +122,26 @@ namespace MazeRunner.Windows
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
             {
-                if (Board.FinishedGame)
-                {
-                    myVM.MyModel.CloseGame();
-
-                }
-                else if(!OpponentBoard.FinishedGame)
-                {
-                    myVM.MyModel.QuitGame();
-
-                }
-                if(OpponentBoard.FinishedGame)
+                if (OpponentBoard.FinishedGame)
                 {
                     LoserWindow lw = (LoserWindow)sender;
                     lw.Close();
                 }
+               else if (Board.FinishedGame)
+                {
+                    myVM.MyModel.CloseGame();
+
+                }
+                else if (!Board.FinishedGame)
+                {
+                    myVM.MyModel.QuitGame();
+                }
+                else if(!OpponentBoard.FinishedGame)
+                {
+                    myVM.MyModel.QuitGame();
+                }
+                
+               
                
                 MainWindow m = new MainWindow();
                 m.Show();
