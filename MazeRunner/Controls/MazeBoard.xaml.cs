@@ -285,8 +285,7 @@ namespace MazeRunner.Controls
             if (MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent==false)
             {
                 FinishedGame = true;
-                FinishWindow fw = new FinishWindow();
-                fw.Show();
+                return 3;
                
             }
             if(MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent)
