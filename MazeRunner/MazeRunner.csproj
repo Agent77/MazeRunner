@@ -198,7 +198,6 @@
   <ItemGroup>
     <Resource Include="Images\frozen maze.jpg" />
     <Resource Include="Images\olaf.png" />
-    <Resource Include="Images\olaf2.png" />
     <Resource Include="Images\annawall.jpg" />
     <Resource Include="Images\elsawall.jpg" />
     <Resource Include="Images\multiBackground.png" />
