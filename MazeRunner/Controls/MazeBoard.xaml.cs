@@ -26,6 +26,7 @@ namespace MazeRunner.Controls
     {
         //private MazeViewModel myVM;
         private Image goalImg;
+        private Image wallImg;
         private Image player;
         public Image Player
         {
@@ -66,13 +67,13 @@ namespace MazeRunner.Controls
 
         private SolidColorBrush GetColour(int r, int c)
         {
-            if (MazeString[r][c] == '0')
-                return Brushes.White;
-            if (MazeString[r][c] == '*')
+            if (MazeString[r][c] == '0'|| MazeString[r][c] == '*')
+                return Brushes.PaleTurquoise;
+            /*if (MazeString[r][c] == '*')
                 return Brushes.White;
             if (MazeString[r][c] == '#')
-                return Brushes.White;
-            return Brushes.Black;
+                return Brushes.White;*/
+            return Brushes.White;
         }
 
 
@@ -105,6 +106,7 @@ namespace MazeRunner.Controls
             int xPlace = 0;
             int yPlace = 0;
             isOpponent = competitor;
+            
             for (x = 0; xPlace < Cols; x += colsDiff )
             {
                 for (y = 0; yPlace < Rows; y += rowsDiff)
@@ -117,13 +119,33 @@ namespace MazeRunner.Controls
                     //p.Stroke = Brushes.Green;
                     //p.StrokeThickness = 1;
                     Board.Children.Add(p);
-                    
+
+
+                    if (MazeString[yPlace][xPlace] == '1')
+                    {
+                        wallImg = new Image();
+                        wallImg.Width = colsDiff;
+                        wallImg.Height = rowsDiff;
+                        if (isOpponent)
+                        {
+                            wallImg.Source = new BitmapImage(new Uri(@"/Images/annawall.jpg", UriKind.RelativeOrAbsolute));
+                        }
+                        else
+                        {
+                            wallImg.Source = new BitmapImage(new Uri(@"/Images/elsawall.jpg", UriKind.RelativeOrAbsolute));
+                        }
+                        Canvas.SetLeft(wallImg, xPlace * colsDiff);
+                        Canvas.SetTop(wallImg, yPlace * rowsDiff);
+                        wallImg.Stretch = Stretch.Fill;
+                        Board.Children.Add(wallImg);
+                    }
                     yPlace++;
 
                 }
                 yPlace = 0;
                 xPlace++;
             }
+            
             goalImg = new Image();
             goalImg.Width = colsDiff;
             goalImg.Height = rowsDiff;
@@ -150,7 +172,7 @@ namespace MazeRunner.Controls
             Board.Children.Add(player);
         }
 
-
+        
 
         public Position OppPos
         {
@@ -331,7 +353,12 @@ namespace MazeRunner.Controls
 
         public void SolveMaze(string solution)
         {
-
+            int rowsDiff = 300 / Rows;
+            int colsDiff = 300 / Cols;
+            playerPosition.Col = InitialPos.Col;
+            playerPosition.Row = InitialPos.Row;
+            Canvas.SetTop(player, playerPosition.Row * rowsDiff);
+            Canvas.SetLeft(player, playerPosition.Col * colsDiff);
             CharEnumerator solEnum = solution.GetEnumerator();
             DispatcherTimer timer = new DispatcherTimer();
 
@@ -342,6 +369,7 @@ namespace MazeRunner.Controls
                     if (solEnum.Current == '0')
                     {
                         MovePlayer(Key.Up);
+
                     }
 
                     if (solEnum.Current == '1')
