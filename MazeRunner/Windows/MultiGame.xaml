@@ -6,7 +6,10 @@
         xmlns:controls="clr-namespace:MazeRunner.Controls"
         mc:Ignorable="d"
         Title="Elsa vs Anna" Height="420" Width="720">
-    <Grid Background="DeepSkyBlue">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/multiBackground.png" Stretch="Fill"/>
+        </Grid.Background>
         <Button Name="MainMenu" FontStyle="Italic" FontWeight="ExtraBold" Background="AliceBlue" Content="Main Menu" Height="20" Width="80" VerticalAlignment="Top" Margin="306,24,306,0" Click="MainMenu_Click"/>
         <controls:MazeBoard x:Name="Board" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="blue" BorderThickness="2"  Loaded="MazeBoard_Loaded" KeyDown="Board_KeyDown" Height="304" Width="304" Margin="16,55,372,10"/>
         <controls:MazeBoard x:Name="OpponentBoard" GoalPos="{Binding VM_GoalPos}"  InitialPos="{Binding VM_InitialPos}" MazeString="{Binding VM_Maze}" Cols="{Binding VM_Cols}" Rows ="{Binding VM_Rows}" BorderBrush="Blue" BorderThickness="2" Height="304" Width="304" Margin="371,55,17,10"/>
