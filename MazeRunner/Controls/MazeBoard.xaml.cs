@@ -42,7 +42,7 @@ namespace MazeRunner.Controls
         private bool isOpponent;
 
         private bool finishedGame = false;
-        private bool FinishedGame {
+        public bool FinishedGame {
             get
             {
                 return finishedGame;
@@ -227,15 +227,17 @@ namespace MazeRunner.Controls
 
         public int MovePlayer(Key k)
         {
-            if (finishedGame) {
-                return 1;
-            }
+            //Other player won
             if(k == Key.Delete)
             {
-                //LoserWindow lw = new LoserWindow();
-                //lw.Show();
                 return -1;
             }
+            //Other player quit
+            if(k == Key.Back)
+            {
+                return -2;
+            }
+
             int rowsDiff = 300 / Rows;
             int colsDiff = 300 / Cols;
             Position current = PlayerPosition;
@@ -285,14 +287,12 @@ namespace MazeRunner.Controls
                 FinishedGame = true;
                 FinishWindow fw = new FinishWindow();
                 fw.Show();
-                return 0;
+               
             }
             if(MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent)
             {
-               // Debug d = new Debug();
-               // d.SetText("OPP arrived, returning 0");
-               // d.Show();
-                return 0;
+                finishedGame = true;
+                return 2;
             }
             return 1;
         }

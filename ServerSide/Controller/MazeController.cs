@@ -1,5 +1,6 @@
 ﻿
 using ServerSide;
+using ServerSide.Controller.Commands;
 using ServerSide.View;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,7 @@ namespace ServerSide
             commands.Add("join", new JoinGameCommand(Model));
             commands.Add("play", new MoveCommand(Model));
             commands.Add("close", new CloseCommand(Model));
+            commands.Add("quit", new QuitCommand(Model));
         }
 
         /// <summary>

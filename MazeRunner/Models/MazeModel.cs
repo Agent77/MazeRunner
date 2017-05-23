@@ -168,11 +168,23 @@ namespace MazeRunner.Models
 
         public void Disconnect()
         {
-            string s = "close";
-            s += " "+ Name;
-            TcpMessenger.Write(s);
-            //TcpMessenger.read();
+           
+           // TcpMessenger.read();
             TcpMessenger.disconnect();
+        }
+
+        public void CloseGame()
+        {
+            string s = "close";
+            s += " " + Name;
+            TcpMessenger.Write(s);
+        }
+
+        public void QuitGame()
+        {
+            string s = "quit";
+            s += " " + Name;
+            TcpMessenger.Write(s);
         }
 
         public string[] MazeString()
@@ -240,6 +252,7 @@ namespace MazeRunner.Models
             string[] sol3 = sol2[1].Split('"');
             return sol3[1];
         }
-     
+
+        
     }
 }

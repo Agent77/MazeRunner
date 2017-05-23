@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Commands\QuitCommand.cs" />
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="View\ClientHandler.cs" />
     <Compile Include="Controller\Commands\CloseCommand.cs" />

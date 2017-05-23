@@ -38,7 +38,9 @@ namespace MazeRunner.Models
         string SolveMaze();
         void SetRows(int r);
         void SetCols(int c);
-       // Position MovePlayer(string direction);
+        void CloseGame();
+        void QuitGame();
+        // Position MovePlayer(string direction);
         void SetName(string s);
         //MazeLib Maze;
         //RunnerPosition;

@@ -55,7 +55,7 @@ namespace MazeRunner.Models
                 while (true)
                 {
                     string pos = TcpMessenger.read();
-                    
+
                     //Position currPos = oppPos;
 
                     if (pos.Contains("Left"))
@@ -74,10 +74,15 @@ namespace MazeRunner.Models
                     {
                         OnOpponentMoved(Key.Down);
                     }
-                    else if (pos.Contains("stay"))
+                    else if (pos.Contains("close"))
                     {
                         OnOpponentMoved(Key.Delete);
                     }
+                    else if (pos.Contains("quit"))
+                    {
+                        OnOpponentMoved(Key.Back);
+                    }
+
                 }
 
             }).Start();
@@ -139,9 +144,13 @@ namespace MazeRunner.Models
                     {
                         OnOpponentMoved(Key.Down);
                     }
-                    else if (pos.Contains("stay"))
+                    else if (pos.Contains("close"))
                     {
                         OnOpponentMoved(Key.Delete);
+                    }
+                    else if (pos.Contains("quite"))
+                    {
+                        OnOpponentMoved(Key.Back);
                     }
                 }
             }).Start();

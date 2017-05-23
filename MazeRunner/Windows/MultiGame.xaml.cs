@@ -43,26 +43,20 @@ namespace MazeRunner.Windows
             {
 
                 int close = 10;
-               // d.Close();
                 this.Dispatcher.Invoke(() =>
                 {
                   close = OpponentBoard.MovePlayer(e);
 
-                    if (close < 0)
+                    if (close  == -1 || close == 2)
                     {
                         LoserWindow lw = new LoserWindow();
                         lw.Show();
-                        myVM.MyModel.Disconnect();
-                        MainMenu_Click(null, null);
-                        lw.Close();
-                       // this.Close();
+                        MainMenu_Click(lw, null);
+
                     }
-                    if (close == 0)
+                  if(close == -2)
                     {
-                       // Debug d2 = new Debug();
-                       // d2.SetText("In close == 0");
-                        //d2.Show();
-                        myVM.MyModel.Disconnect();
+                        OtherPlayerQuit();
                     }
                 });
                 
@@ -71,7 +65,21 @@ namespace MazeRunner.Windows
             myVM.VM_Maze = myVM.MyModel.MazeString();
         }
 
-
+        private void OtherPlayerQuit()
+        {
+            string message = "Other Play quit the game!";
+            string caption = "Game Ended";
+            MessageBoxButton buttuon = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
+            if (result == MessageBoxResult.OK)
+            {
+               
+                myVM.MyModel.Disconnect();
+                MainWindow m = new MainWindow();
+                m.Show();
+                this.Close();
+            }
+        }
 
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
@@ -114,9 +122,25 @@ namespace MazeRunner.Windows
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
             {
-                //myVM.MyModel.Disconnect();
+                if (Board.FinishedGame)
+                {
+                    myVM.MyModel.CloseGame();
+
+                }
+                else if(!OpponentBoard.FinishedGame)
+                {
+                    myVM.MyModel.QuitGame();
+
+                }
+                if(OpponentBoard.FinishedGame)
+                {
+                    LoserWindow lw = (LoserWindow)sender;
+                    lw.Close();
+                }
+               
                 MainWindow m = new MainWindow();
                 m.Show();
+                myVM.MyModel.Disconnect();
                 this.Close();
             }
         }

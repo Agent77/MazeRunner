@@ -43,8 +43,8 @@ namespace ServerSide
                 //Stream for opponent
                 NetworkStream stream = O.GetStream();
                 StreamWriter writer = new StreamWriter(stream);
-                str = "stay";
-                Console.WriteLine("stay");
+                str = "close";
+                Console.WriteLine("close");
                 writer.WriteLine(str);
                 //writer.WriteLine("#");
                 writer.Flush();
