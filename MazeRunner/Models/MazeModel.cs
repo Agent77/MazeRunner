@@ -13,16 +13,23 @@ namespace MazeRunner.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-
+        /// <summary>
+        /// Represents columns of maze
+        /// </summary>
         private int cols;
+        /// <summary>
+        /// Represents rows of maze
+        /// </summary>
         private int rows;
+        /// <summary>
+        /// Represents the maze
+        /// </summary>
         private Maze maze;
         public Maze MyMaze
         {
             get
             {
                 return maze;
-                //TODO return MyMaze in string form
             }
             set
             {
@@ -57,7 +64,11 @@ namespace MazeRunner.Models
 
             }
         }
-        public int rowsTry { get; set; }
+        
+
+        /// <summary>
+        /// Represents the name of the maze
+        /// </summary>
         private string name;
         public string Name
         {
@@ -69,6 +80,9 @@ namespace MazeRunner.Models
             }
         }
 
+        /// <summary>
+        /// Represents initial position of maze
+        /// </summary>
         private Position initialPos;
         public Position InitialPos
         {
@@ -83,7 +97,9 @@ namespace MazeRunner.Models
             }
         }
 
-
+        /// <summary>
+        /// Represents goal position of maze
+        /// </summary>
         private Position goalPos;
         public Position GoalPos
         {
@@ -98,6 +114,9 @@ namespace MazeRunner.Models
             }
         }
 
+        /// <summary>
+        /// Represents player's position in maze
+        /// </summary>
         private Position playerLocation;
         public Position PlayerLocation
         {
@@ -112,11 +131,14 @@ namespace MazeRunner.Models
             }
         }
 
-        
-
-
-
+        /// <summary>
+        /// Represents ip of server
+        /// </summary>
         public string ServerIp { get; set; }
+        
+        /// <summary>
+        /// Represents port of server
+        /// </summary>
         public string Port { get; set; }
         public ClientCommunicator TcpMessenger { get; set; }
 
@@ -125,28 +147,27 @@ namespace MazeRunner.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MazeModel()
         {
-            // TcpMessenger = new ClientCommunicator();
-            // TcpMessenger.Connect(ServerIp, Port);
 
         }
 
+        /// <summary>
+        /// Method that gets generate command, send it to server and create maze in client
+        /// </summary>
+        /// <param name="action"></param>
         public void SendMaze(string action)
         {
             string s = action;
             s += " " + Name + " " + Rows + " " + Cols;
             TcpMessenger.Write(s);
-
-            //new Task(() =>
-            //{
-                string maze = TcpMessenger.read();
-                MyMaze = Maze.FromJSON(maze);
-                InitialPos = MyMaze.InitialPos;
-                GoalPos = MyMaze.GoalPos;
-
-
-            //}).Start();
+            string maze = TcpMessenger.read();
+            MyMaze = Maze.FromJSON(maze);
+            InitialPos = MyMaze.InitialPos;
+            GoalPos = MyMaze.GoalPos;
         }
 
 
@@ -154,13 +175,11 @@ namespace MazeRunner.Models
         {
             Name = s;
         }
-        public string GetMaze()
-        {
-            //RETURN STRING OF MAZE? or array?
-            return "01001";
-        }
 
-
+        /// <summary>
+        /// Ctreate connection to server
+        /// </summary>
+        /// <returns></returns>
         public int Connect()
         {
             TcpMessenger = new ClientCommunicator();
@@ -168,13 +187,17 @@ namespace MazeRunner.Models
             return success;
         }
 
+        /// <summary>
+        /// Disconnecting from server
+        /// </summary>
         public void Disconnect()
         {
-           
-           // TcpMessenger.read();
             TcpMessenger.disconnect();
         }
 
+        /// <summary>
+        /// Sending server message that current game id closed
+        /// </summary>
         public void CloseGame()
         {
             string s = "close";
@@ -182,6 +205,9 @@ namespace MazeRunner.Models
             TcpMessenger.Write(s);
         }
 
+        /// <summary>
+        /// Sending server message that player exited game
+        /// </summary>
         public void QuitGame()
         {
             string s = "quit";
@@ -189,6 +215,10 @@ namespace MazeRunner.Models
             TcpMessenger.Write(s);
         }
 
+        /// <summary>
+        /// Parsing the maze object to a 2 dimensional string array
+        /// </summary>
+        /// <returns>Maze string representation</returns>
         public string[] MazeString()
         {
             string[] wholeString = new string[Rows];
@@ -223,6 +253,9 @@ namespace MazeRunner.Models
             return wholeString;
         }
 
+        /// <summary>
+        /// Join coammand sent to server
+        /// </summary>
         public void Join()
         {
             string s = "join ";
@@ -246,6 +279,10 @@ namespace MazeRunner.Models
             cols = c;
         }
 
+        /// <summary>
+        /// Sending to maze request for solving maze
+        /// </summary>
+        /// <returns>Solution string</returns>
         public string SolveMaze()
         {
             string algorithm = ConfigurationManager.AppSettings["algorithm"];

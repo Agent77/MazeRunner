@@ -19,27 +19,32 @@ using System.Windows.Shapes;
 namespace MazeRunner.Windows
 {
     /// <summary>
-    /// Interaction logic for MultiGame.xaml
+    /// Multi game window
     /// </summary>
     public partial class MultiGame : Window
     {
         private MultiViewModel myVM;
-        private bool alreadyOut = false;
+        private bool alreadyOut = false; //True when player closes game 
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MultiGame()
         {
             InitializeComponent();
             KeyDown += Board_KeyDown;
-
         }
 
-
+        /// <summary>
+        /// Setting the viewmodel
+        /// </summary>
+        /// <param name="m"></param>
         public void SetVM(MazeViewModel m)
         {
-           // Debug d = new Debug();
-           // d.Show();
             myVM = m as MultiViewModel;
             this.DataContext = myVM;
             MultiMazeModel tempModel = myVM.MyModel as MultiMazeModel;
+            //Delegate for moving opponent's player on his board
             tempModel.OpponentMoved += delegate (Object sender, Key e)
             {
 
@@ -48,17 +53,16 @@ namespace MazeRunner.Windows
                 {
                   close = OpponentBoard.MovePlayer(e);
 
-                    if (close  == -1 || close == 2)
-                    {
-                        LoserWindow lw = new LoserWindow();
-                        lw.ShowDialog();
-                        //MainMenu_Click(lw, null);
-                        BackToMain();
-
-                    }
+                  //Opponent won
+                  if (close  == -1 || close == 2)
+                  {
+                      LoserWindow lw = new LoserWindow();
+                      lw.ShowDialog();
+                      BackToMain();
+                  }
+                  //Opponent closed game
                   if(close == -2)
                     {
-                      
                         OtherPlayerQuit();
                     }
                 });
@@ -68,6 +72,9 @@ namespace MazeRunner.Windows
             myVM.VM_Maze = myVM.MyModel.MazeString();
         }
 
+        /// <summary>
+        /// Disconnecting from server and closing game
+        /// </summary>
         private void BackToMain()
         {
             alreadyOut = true;
@@ -77,6 +84,9 @@ namespace MazeRunner.Windows
             this.Close();
         }
 
+        /// <summary>
+        /// Closing game since opponent closd game
+        /// </summary>
         private void OtherPlayerQuit()
         {
             string message = "Other Play quit the game!";
@@ -84,21 +94,17 @@ namespace MazeRunner.Windows
             MessageBoxButton buttuon = MessageBoxButton.OKCancel;
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
-            {
-               // myVM.MyModel.Disconnect();
-               // Debug d = new Debug();
-               // d.SetText("AFTER DISCONNECT");
-               // d.Show();
-                BackToMain();
-                //MainWindow m = new MainWindow();
-                //Debug d2 = new Debug();
-                //d2.SetText("after main window");
-                //d2.Show();
-                //m.Show();
+            {               
+                BackToMain();                
                 this.Close();
             }
         }
 
+        /// <summary>
+        /// Creating the maze boards for window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MazeBoard_Loaded(object sender, RoutedEventArgs e)
         {
             Board.DrawBoard(false);
@@ -106,6 +112,11 @@ namespace MazeRunner.Windows
 
         }
 
+        /// <summary>
+        /// Moving player by pressed key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Board_KeyDown(object sender, KeyEventArgs e)
         {
             int check;
@@ -129,6 +140,7 @@ namespace MazeRunner.Windows
                     tempModel.MovePlayer("Down");
                     break;
             }
+            //checks whether player won the game
             if (check == 3)
             {
                 FinishWindow fw = new FinishWindow();
@@ -141,6 +153,11 @@ namespace MazeRunner.Windows
 
         }
 
+        /// <summary>
+        /// Getting back to main menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainMenu_Click(object sender, RoutedEventArgs e)
         {
             string message = "Do you want to return to main menu?";
@@ -150,29 +167,15 @@ namespace MazeRunner.Windows
             if (result == MessageBoxResult.OK)
             {                
                 myVM.MyModel.QuitGame();
-                BackToMain();
-                
-                /* if (OpponentBoard.FinishedGame)
-                {
-                    myVM.MyModel.CloseGame();
-
-                }
-                else if (OpponentBoard.FinishedGame)
-                {
-                    LoserWindow lw = (LoserWindow)sender;
-                    lw.Close();
-                }
-                else if(!OpponentBoard.FinishedGame)
-                {
-                    myVM.MyModel.QuitGame();
-                }*/
-                
-               
-               
-                
+                BackToMain();                
             }
         }
 
+        /// <summary>
+        /// When player closes window during game it sends relevant message to opponent and closes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             if (alreadyOut==false)

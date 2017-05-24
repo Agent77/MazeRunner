@@ -17,31 +17,13 @@ using System.Windows.Shapes;
 namespace MazeRunner.Controls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Main window user control
     /// </summary>
     public partial class MainWindow : UserControl
     {
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void SingleClick(object sender, RoutedEventArgs e)
-        {
-            SingleStartWindow n = new SingleStartWindow();
-            n.Show();
-            
-        }
-
-        private void MultiClick(object sender, RoutedEventArgs e)
-        {
-            MultiStartWindow mw = new MultiStartWindow();
-            mw.Show();
-        }
-
-        private void SettingsClick(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

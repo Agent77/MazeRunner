@@ -8,14 +8,17 @@ using MazeLib;
 
 namespace MazeRunner.Models
 {
+    /// <summary>
+    /// Single Maze model
+    /// </summary>
     public class SingleMazeModel : MazeModel
     {
-
+        /// <summary>
+        /// Constructor calls MazeModel constructor
+        /// </summary>
         public SingleMazeModel(): base()
         {
-            
-            //Cols = 0;
-            //Rows = 0;
+          
         }
 
 

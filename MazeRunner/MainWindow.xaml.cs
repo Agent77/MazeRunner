@@ -17,17 +17,20 @@ using System.Windows.Shapes;
 namespace MazeRunner
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// This is the main window of the game
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-           
         }
 
-
+        /// <summary>
+        /// When clicking on single option a single window is created and main window closes itself
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SingleClick(object sender, RoutedEventArgs e)
         {
             SingleStartWindow n = new SingleStartWindow();
@@ -36,6 +39,11 @@ namespace MazeRunner
 
         }
 
+        /// <summary>
+        /// When clicking on multi option a multi window is created and main window closes itself
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MultiClick(object sender, RoutedEventArgs e)
         {
             MultiStartWindow mw = new MultiStartWindow();
@@ -44,26 +52,15 @@ namespace MazeRunner
 
         }
 
+        /// <summary>
+        /// When clicking on settings option a settings window is created
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SettingsClick(object sender, RoutedEventArgs e)
         {
             Settings set = new Settings();
             set.Show();
         }
-        /*private void SingleClick(object sender, RoutedEventArgs e)
-        {
-            SingleStartWindow n = new SingleStartWindow();
-            n.Show();
-        }
-
-        private void MultiClick(object sender, RoutedEventArgs e)
-        {
-            MultiStartWindow mw = new MultiStartWindow();
-            mw.Show();
-        }
-
-        private void SettingsClick(object sender, RoutedEventArgs e)
-        {
-
-        }*/
     }
 }

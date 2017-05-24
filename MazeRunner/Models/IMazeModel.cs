@@ -30,11 +30,11 @@ namespace MazeRunner.Models
 
         string Port { get; set; }
 
-        int rowsTry { get; set; }
+        
         void NotifyPropertyChanged(string propName);
         void SendMaze(string action);
         void Join();
-        string GetMaze();
+        
         string[] MazeString();
         string SolveMaze();
         void SetRows(int r);

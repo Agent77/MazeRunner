@@ -10,11 +10,15 @@ using System.ComponentModel;
 
 namespace MazeRunner.ViewModels
 {
+    /// <summary>
+    /// Single viewmodel
+    /// </summary>
     public class SingleViewModel : MazeViewModel
     {
-       // public SingleMazeModel MyModel;
-
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="model"></param>
         public SingleViewModel(IMazeModel model) : base(model)
         {
             MyModel = model as SingleMazeModel;
@@ -25,30 +29,7 @@ namespace MazeRunner.ViewModels
             };
            
         }
-
-      
-
-        public void ExecuteCommand(string s)
-        {
-            // MyModel.SendRequest('string' from user);
-            //Other commands...Add controller to model
-        }
-
-        public void InitializeCommands()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetModel(IMazeModel m)
-        {
-            throw new NotImplementedException();
-        }
-
+        
     }
 
 }
