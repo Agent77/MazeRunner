@@ -23,6 +23,7 @@ namespace MazeRunner.Windows
     public partial class MultiStartWindow : Window
     {
         private MultiViewModel myVM;
+
         public MultiStartWindow()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace MazeRunner.Windows
                 c.Show();
                 this.Close();
             }
+            m.GetListOfGames();
             myVM = new MultiViewModel(m);
             DataContext = myVM;
             GameInfo.btnStart.Click += BtnStart_Click;
@@ -45,6 +47,14 @@ namespace MazeRunner.Windows
             
            
             MultiMazeModel m = myVM.MyModel as MultiMazeModel;
+            int success = m.Connect();
+            if (success < 0)
+            {
+                ConnectionFailedWindow c = new ConnectionFailedWindow();
+                c.Show();
+                this.Close();
+            }
+            m.GetListOfGames();
             m.Join("join");
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);

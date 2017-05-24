@@ -58,9 +58,7 @@ namespace MazeRunner.Windows
                     }
                   if(close == -2)
                     {
-                        Debug d = new Debug();
-                        d.SetText("PLAYER QUIT");
-                        d.Show();
+                      
                         OtherPlayerQuit();
                     }
                 });
@@ -87,9 +85,16 @@ namespace MazeRunner.Windows
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
             {
-                myVM.MyModel.Disconnect();
-                MainWindow m = new MainWindow();
-                m.Show();
+               // myVM.MyModel.Disconnect();
+               // Debug d = new Debug();
+               // d.SetText("AFTER DISCONNECT");
+               // d.Show();
+                BackToMain();
+                //MainWindow m = new MainWindow();
+                //Debug d2 = new Debug();
+                //d2.SetText("after main window");
+                //d2.Show();
+                //m.Show();
                 this.Close();
             }
         }

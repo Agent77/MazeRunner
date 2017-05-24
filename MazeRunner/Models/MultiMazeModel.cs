@@ -26,7 +26,7 @@ namespace MazeRunner.Models
 
         public MultiMazeModel() : base()
         {
-            gameList = GetListOfGames();
+            //gameList = GetListOfGames();
         }
         public void MovePlayer(string direction)
         {
