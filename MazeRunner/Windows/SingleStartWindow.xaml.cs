@@ -28,7 +28,13 @@ namespace MazeRunner.Windows
             myVM = new SingleViewModel(new SingleMazeModel());
             this.DataContext = myVM;
             InitializeComponent();
-
+            int success = myVM.MyModel.Connect();
+            if (success < 0)
+            {
+                ConnectionFailedWindow c = new ConnectionFailedWindow();
+                c.Show();
+                this.Close();
+            }
             GameInfo.btnStart.Click += BtnStart_Click;
         }
 

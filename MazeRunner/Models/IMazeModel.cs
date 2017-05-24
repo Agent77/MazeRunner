@@ -45,7 +45,7 @@ namespace MazeRunner.Models
         //MazeLib Maze;
         //RunnerPosition;
 
-        void Connect();
+        int Connect();
         void Disconnect();
     }
 

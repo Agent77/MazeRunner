@@ -76,6 +76,9 @@
     <Compile Include="ViewModels\MazeViewModel.cs" />
     <Compile Include="ViewModels\MultiViewModel.cs" />
     <Compile Include="ViewModels\SingleViewModel.cs" />
+    <Compile Include="Windows\ConnectionFailedWindow.xaml.cs">
+      <DependentUpon>ConnectionFailedWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Debug.xaml.cs">
       <DependentUpon>Debug.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\ConnectionFailedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Debug.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -47,7 +47,7 @@ namespace MazeRunner.Windows
                 {
                   close = OpponentBoard.MovePlayer(e);
 
-                    if (close  == -1 || close == 2)
+                    if (close  == -1)
                     {
                         LoserWindow lw = new LoserWindow();
                         lw.Show();
@@ -56,6 +56,9 @@ namespace MazeRunner.Windows
                     }
                   if(close == -2)
                     {
+                        Debug d = new Debug();
+                        d.SetText("PLAYER QUIT");
+                        d.Show();
                         OtherPlayerQuit();
                     }
                 });
@@ -73,7 +76,6 @@ namespace MazeRunner.Windows
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
             {
-               
                 myVM.MyModel.Disconnect();
                 MainWindow m = new MainWindow();
                 m.Show();
@@ -122,27 +124,30 @@ namespace MazeRunner.Windows
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
             {
-                if (OpponentBoard.FinishedGame)
-                {
-                    LoserWindow lw = (LoserWindow)sender;
-                    lw.Close();
-                }
-               else if (Board.FinishedGame)
+                if (Board.FinishedGame)
                 {
                     myVM.MyModel.CloseGame();
 
                 }
+                else if (OpponentBoard.FinishedGame)
+                {
+                    LoserWindow lw = (LoserWindow)sender;
+                    lw.Close();
+                }
                 else if (!Board.FinishedGame)
                 {
+                    Debug d = new Debug();
+                    d.SetText("I QUIT");
+                    d.Show();
                     myVM.MyModel.QuitGame();
                 }
-                else if(!OpponentBoard.FinishedGame)
+               
+
+                else if (!OpponentBoard.FinishedGame)
                 {
+
                     myVM.MyModel.QuitGame();
                 }
-                
-               
-               
                 MainWindow m = new MainWindow();
                 m.Show();
                 myVM.MyModel.Disconnect();

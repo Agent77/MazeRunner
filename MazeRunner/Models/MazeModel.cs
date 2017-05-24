@@ -127,8 +127,8 @@ namespace MazeRunner.Models
 
         public MazeModel()
         {
-             TcpMessenger = new ClientCommunicator();
-             TcpMessenger.Connect(ServerIp, Port);
+            // TcpMessenger = new ClientCommunicator();
+            // TcpMessenger.Connect(ServerIp, Port);
 
         }
 
@@ -161,9 +161,11 @@ namespace MazeRunner.Models
         }
 
 
-        public void Connect()
+        public int Connect()
         {
-            throw new NotImplementedException();
+            TcpMessenger = new ClientCommunicator();
+            int success = TcpMessenger.Connect(ServerIp, Port);
+            return success;
         }
 
         public void Disconnect()
