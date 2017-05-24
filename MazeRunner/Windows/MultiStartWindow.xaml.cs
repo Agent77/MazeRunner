@@ -38,7 +38,7 @@ namespace MazeRunner.Windows
             
            
             MultiMazeModel m = myVM.MyModel as MultiMazeModel;
-            m.Join();
+            m.Join("join");
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
 
@@ -52,11 +52,11 @@ namespace MazeRunner.Windows
         {
             waitingWindow ww = new waitingWindow();
             ww.Show();
-            myVM.MyModel.SendMaze("start");
+            //myVM.MyModel.SendMaze("start");
            // ww.Close();
             MultiMazeModel m = myVM.MyModel as MultiMazeModel;
-            m.BeginMoves();
-            
+            //m.BeginMoves("start");
+            m.Join("start");
 
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);

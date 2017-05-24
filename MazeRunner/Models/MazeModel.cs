@@ -221,7 +221,18 @@ namespace MazeRunner.Models
             return wholeString;
         }
 
-
+        public void Join()
+        {
+            string s = "join ";
+            s += Name;
+            TcpMessenger.Write(s);
+            string maze = TcpMessenger.read();
+            MyMaze = Maze.FromJSON(maze);
+            InitialPos = MyMaze.InitialPos;
+            GoalPos = MyMaze.GoalPos;
+            Rows = MyMaze.Rows;
+            Cols = MyMaze.Cols;
+        }
         
         public void SetRows(int r)
         {

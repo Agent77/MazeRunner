@@ -122,6 +122,7 @@ namespace MazeRunner.Windows
             {
                 FinishWindow fw = new FinishWindow();
                 fw.ShowDialog();
+                myVM.MyModel.CloseGame();
                 BackToMain();
                 fw.Close();
             }
