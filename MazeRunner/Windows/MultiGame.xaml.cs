@@ -48,7 +48,7 @@ namespace MazeRunner.Windows
                 {
                   close = OpponentBoard.MovePlayer(e);
 
-                    if (close  == -1)
+                    if (close  == -1 || close == 2)
                     {
                         LoserWindow lw = new LoserWindow();
                         lw.ShowDialog();
