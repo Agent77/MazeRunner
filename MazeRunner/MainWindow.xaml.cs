@@ -46,7 +46,8 @@ namespace MazeRunner
 
         private void SettingsClick(object sender, RoutedEventArgs e)
         {
-
+            Settings set = new Settings();
+            set.Show();
         }
         /*private void SingleClick(object sender, RoutedEventArgs e)
         {

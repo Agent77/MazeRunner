@@ -56,8 +56,24 @@ namespace MazeRunner.Windows
 
         private void Board_KeyDown(object sender, KeyEventArgs e)
         {
+            int check;
             Key k = e.Key;
-            Board.MovePlayer(k);
+            check=Board.MovePlayer(k);
+            if (check == 3)
+            {
+                FinishWindow fw = new FinishWindow();
+                fw.ShowDialog();
+                fw.sPlayer.Stop();
+                BackToMain();
+            }
+        }
+
+        private void BackToMain()
+        {
+            myVM.MyModel.Disconnect();
+            MainWindow m = new MainWindow();
+            m.Show();
+            this.Close();
         }
 
         private void Main_Click(object sender, RoutedEventArgs e)
@@ -68,10 +84,7 @@ namespace MazeRunner.Windows
             MessageBoxResult result = MessageBox.Show(message, caption, buttuon);
             if (result == MessageBoxResult.OK)
             {
-                myVM.MyModel.Disconnect();
-                MainWindow m = new MainWindow();
-                m.Show();
-                this.Close();
+                BackToMain();
             }
            
         }

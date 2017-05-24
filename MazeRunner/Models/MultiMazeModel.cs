@@ -38,17 +38,30 @@ namespace MazeRunner.Models
            
         }
 
-        public void Join()
+        public void Join(string action)
         {
-            string s = "join ";
-            s += Name;
+            string s;
+            if (action == "join")
+            {
+                s = "join ";
+                s += Name;
+            }
+            else
+            {
+                s = "start ";
+                s += Name + " " + Rows + " " + Cols;
+            }
+            
             TcpMessenger.Write(s);
             string maze = TcpMessenger.read();
             MyMaze = Maze.FromJSON(maze);
             InitialPos = MyMaze.InitialPos;
             GoalPos = MyMaze.GoalPos;
-            Rows = MyMaze.Rows;
-            Cols = MyMaze.Cols;
+            if (action == "join")
+            {
+                Rows = MyMaze.Rows;
+                Cols = MyMaze.Cols;
+            }
 
             new Task(() =>
             {
@@ -118,8 +131,31 @@ namespace MazeRunner.Models
             }
         }
 
-        public void BeginMoves()
+        public void BeginMoves(string action)
         {
+            string s = action;
+            if (action == "start")
+            {
+
+                s += " " + Name + " " + Rows + " " + Cols;
+            }
+            else
+            {
+                s += " " + Name;
+            }
+            TcpMessenger.Write(s);
+
+            
+            string maze = TcpMessenger.read();
+            MyMaze = Maze.FromJSON(maze);
+            InitialPos = MyMaze.InitialPos;
+            GoalPos = MyMaze.GoalPos;
+            if (action == "join")
+            {
+                Rows = MyMaze.Rows;
+                Cols = MyMaze.Cols;
+            }
+
             new Task(() =>
             {
                 while (true)
