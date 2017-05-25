@@ -198,7 +198,7 @@ namespace MazeRunner.Models
             string s = action;
             s += " " + Name + " " + Rows + " " + Cols;
             TcpMessenger.Write(s);
-            string maze = TcpMessenger.read();
+            string maze = TcpMessenger.Read();
             MyMaze = Maze.FromJSON(maze);
             InitialPos = MyMaze.InitialPos;
             GoalPos = MyMaze.GoalPos;
@@ -229,7 +229,7 @@ namespace MazeRunner.Models
         /// </summary>
         public void Disconnect()
         {
-            TcpMessenger.disconnect();
+            TcpMessenger.Disconnect();
         }
 
         /// <summary>

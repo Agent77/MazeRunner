@@ -37,8 +37,6 @@ namespace MazeRunner.Windows
             {
                 ConnectionFailedWindow c = new ConnectionFailedWindow();
                 c.Show();
-                //this.Close();
-               // return;
             }
             if (success >= 0)
             {

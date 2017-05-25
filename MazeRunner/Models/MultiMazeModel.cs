@@ -10,35 +10,56 @@ using System.Windows.Input;
 
 namespace MazeRunner.Models
 {
+    /// <summary>
+    /// Multi player maze model
+    /// </summary>
     public class MultiMazeModel : MazeModel
     {
 
-        
+        /// <summary>
+        /// Event handler for multi maze model
+        /// </summary>
+        /// <param name="o">na</param>
+        /// <param name="e">na</param>
         public  delegate void EventHandler(object o, Key e);
 
+        /// <summary>
+        /// Event for when opponent moved
+        /// </summary>
         public event EventHandler OpponentMoved;
-
+        /// <summary>
+        /// Function to call when event is called
+        /// </summary>
+        /// <param name="e">direction opponent moved</param>
         protected virtual void OnOpponentMoved(Key e)
         {
             if (OpponentMoved != null)
                 OpponentMoved(this, e);
         }
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MultiMazeModel() : base()
         {
-            //gameList = GetListOfGames();
         }
+        /// <summary>
+        /// sends to server their move
+        /// </summary>
+        /// <param name="direction">direction they moved</param>
         public void MovePlayer(string direction)
         {
-            //base.MovePlayer(direction);
             string s = "play ";
             s += direction;
             TcpMessenger.Write(s);
 
            
         }
-
-        public void Join(string action)
+        /// <summary>
+        /// Starts or joins the game, and begins the
+        /// task of receiving the opponents moves
+        /// </summary>
+        /// <param name="action"> start or join</param>
+        public void StartGame(string action)
         {
             string s;
             if (action == "join")
@@ -69,7 +90,6 @@ namespace MazeRunner.Models
                 {
                     string pos = TcpMessenger.Read();
 
-                    //Position currPos = oppPos;
 
                     if (pos.Contains("Left"))
                     {
@@ -101,7 +121,10 @@ namespace MazeRunner.Models
             }).Start();
         }
         
-
+        /// <summary>
+        /// Gets a list of the games the player can join
+        /// </summary>
+        /// <returns>list of games</returns>
         public ObservableCollection<string> GetListOfGames()
         {
             string request = "list";
@@ -117,7 +140,9 @@ namespace MazeRunner.Models
             gameList = new ObservableCollection<string>(list);
             return gameList;
         }
-        
+        /// <summary>
+        /// List of games in server
+        /// </summary>
         private ObservableCollection<string> gameList;
         public ObservableCollection<string> GameList
         {
@@ -129,67 +154,6 @@ namespace MazeRunner.Models
             {
                 gameList = value;
             }
-        }
-
-        public void BeginMoves(string action)
-        {
-            string s = action;
-            if (action == "start")
-            {
-
-                s += " " + Name + " " + Rows + " " + Cols;
-            }
-            else
-            {
-                s += " " + Name;
-            }
-            TcpMessenger.Write(s);
-
-            
-            string maze = TcpMessenger.Read();
-            MyMaze = Maze.FromJSON(maze);
-            InitialPos = MyMaze.InitialPos;
-            GoalPos = MyMaze.GoalPos;
-            if (action == "join")
-            {
-                Rows = MyMaze.Rows;
-                Cols = MyMaze.Cols;
-            }
-
-            new Task(() =>
-            {
-                while (true)
-                {
-                    string pos = TcpMessenger.Read();
-
-                    //Position currPos = oppPos;
-
-                    if (pos.Contains("Left"))
-                    {
-                        OnOpponentMoved(Key.Left);
-                    }
-                    else if (pos.Contains("Right"))
-                    {
-                        OnOpponentMoved(Key.Right);
-                    }
-                    else if (pos.Contains("Up"))
-                    {
-                        OnOpponentMoved(Key.Up);
-                    }
-                    else if (pos.Contains("Down"))
-                    {
-                        OnOpponentMoved(Key.Down);
-                    }
-                    else if (pos.Contains("close"))
-                    {
-                        OnOpponentMoved(Key.Delete);
-                    }
-                    else if (pos.Contains("quite"))
-                    {
-                        OnOpponentMoved(Key.Back);
-                    }
-                }
-            }).Start();
         }
 
     }

@@ -62,15 +62,13 @@ namespace MazeRunner.Windows
             {
                 ConnectionFailedWindow c = new ConnectionFailedWindow();
                 c.Show();
-                //this.Close();
-                // return;
             }
             if (success >= 0)
             {
                 GameInfo.btnStart.Click += BtnStart_Click;
                 this.Show();
                 m.GetListOfGames();
-                m.Join("join");
+                m.StartGame("join");
                 MultiGame mg = new MultiGame();
                 mg.SetVM(myVM);
                 mg.Show();
@@ -87,7 +85,7 @@ namespace MazeRunner.Windows
             waitingWindow ww = new waitingWindow();
             ww.Show();
             MultiMazeModel m = myVM.MyModel as MultiMazeModel;
-            m.Join("start");
+            m.StartGame("start");
             MultiGame mg = new MultiGame();
             mg.SetVM(myVM);
             myVM.VM_GameList = null;
