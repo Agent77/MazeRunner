@@ -29,7 +29,8 @@ namespace MazeRunner.Controls
         private void SingleClick(object sender, RoutedEventArgs e)
         {
             SingleStartWindow n = new SingleStartWindow();
-            n.Show();
+           // if(n.IsActive)
+           // n.Show();
             
         }
 

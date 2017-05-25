@@ -9,27 +9,54 @@ using System.Threading.Tasks;
 
 namespace MazeRunner.Models
 {
-
+    /// <summary>
+    /// Class to connect and communicate with server
+    /// </summary>
     public class ClientCommunicator
     {
+
+        /// <summary>
+        /// Tcp connection member
+        /// </summary>
         private TcpClient tcpMessenger;
         
+        /// <summary>
+        /// Writer
+        /// </summary>
         private StreamWriter writer;
+        /// <summary>
+        /// reader
+        /// </summary>
         private StreamReader reader;
+
+        /// <summary>
+        /// Constructor for client communicator
+        /// </summary>
         public ClientCommunicator()
         {
         }
 
+        /// <summary>
+        /// Connect method
+        /// </summary>
+        /// <param name="ip"> ip address from App. config</param>
+        /// <param name="port"> port from app config</param>
+        /// <returns>Success or failur</returns>
         public int Connect(string ip, string port)
         {
 
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), Int32.Parse("5555"));
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"),
+                Int32.Parse("5555"));
             tcpMessenger = new TcpClient();
-            tcpMessenger.Connect(ep);
-            if(!tcpMessenger.Connected)
+            try
+            {
+                tcpMessenger.Connect(ep);
+
+            } catch(Exception e)
             {
                 return -1;
             }
+          
             NetworkStream ns = tcpMessenger.GetStream();
             writer = new StreamWriter(ns);
             reader = new StreamReader(ns);
@@ -37,12 +64,21 @@ namespace MazeRunner.Models
             return 1;
         }
 
+        /// <summary>
+        /// Writes to server
+        /// </summary>
+        /// <param name="command"> from to send to server</param>
         public void Write(string command)
         {
             writer.WriteLine(command);
 
         }
-        public string read()
+
+        /// <summary>
+        /// Reads from server
+        /// </summary>
+        /// <returns> string read</returns>
+        public string Read()
         {
             string result = null;
             string test = reader.ReadLine();
@@ -56,9 +92,13 @@ namespace MazeRunner.Models
                
             }
             return result;
-        } // blocking call
+        } 
 
-        public void disconnect() {
+
+        /// <summary>
+        /// Disconnects from server
+        /// </summary>
+        public void Disconnect() {
             tcpMessenger.Close();
         }
     }

@@ -11,16 +11,31 @@ using System.Threading.Tasks;
 
 namespace MazeRunner.ViewModels
 {
-
+    /// <summary>
+    /// Abstract class for ViewModels
+    /// </summary>
     public abstract class MazeViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Server Ip
+        /// </summary>
         public static string ServerIP { get; set; }
+        /// <summary>
+        /// Server Port
+        /// </summary>
         public static int Port { get; set; }
+        /// <summary>
+        /// Type of search algorithm to use
+        /// </summary>
         public static int SearchType { get; set; }
+        /// <summary>
+        /// Model member
+        /// </summary>
         public IMazeModel MyModel;
-        //all other MyMazeModel properties (except client)
-        //rows, columns, name of maze (for data binding)
-
+        /// <summary>
+        /// Constructor, initializes values
+        /// </summary>
+        /// <param name="model">model</param>
         public MazeViewModel(IMazeModel model)
         {
             MyModel = model;
@@ -33,7 +48,10 @@ namespace MazeRunner.ViewModels
 
 
         }
-
+        /// <summary>
+        /// Sets the model for the ViewModel
+        /// </summary>
+        /// <param name="m">model</param>
        public void SetModel(IMazeModel m)
         {
             MyModel = m;
@@ -44,13 +62,22 @@ namespace MazeRunner.ViewModels
             VM_Rows = Int32.Parse(row);
             VM_Cols = Int32.Parse(col);
         }
-
+        /// <summary>
+        /// Notifies that a property has changed
+        /// </summary>
+        /// <param name="propertyName"> which property has been changed</param>
         public void NotifyPropertyChanged(string propertyName)
         {
-            //  VM_Name = MyModel.getName();
+           
         }
+        /// <summary>
+        /// Property changed event
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// ViewModel player location property
+        /// </summary>
         public Position VM_PlayerLocation
         {
             get
@@ -59,10 +86,11 @@ namespace MazeRunner.ViewModels
             }
             set
             {
-               // MyModel.MovePlayer(value);
             }
         }
-        
+        /// <summary>
+        /// ViewModel goal pos property
+        /// </summary>
         public Position VM_GoalPos
         {
             get
@@ -71,11 +99,15 @@ namespace MazeRunner.ViewModels
             }
             set
             {
-                // MyModel.MovePlayer(value);
             }
         }
-
+        /// <summary>
+        /// Maze in 2D array format member
+        /// </summary>
         private string[] maze;
+        /// <summary>
+        /// ViewModel maze property
+        /// </summary>
         public string[] VM_Maze
         {
             get
@@ -87,7 +119,13 @@ namespace MazeRunner.ViewModels
                 maze = value;
             }
         }
+        /// <summary>
+        /// Name member for maze
+        /// </summary>
         private string name;
+        /// <summary>
+        /// name property for maze
+        /// </summary>
         public string VM_Name
         {
             get
@@ -101,7 +139,13 @@ namespace MazeRunner.ViewModels
                 name = value;
             }
         }
+        /// <summary>
+        /// Private col num in maze
+        /// </summary>
         private int cols;
+        /// <summary>
+        /// ViewModel num of columns
+        /// </summary>
         public int VM_Cols
         {
             get
@@ -115,8 +159,13 @@ namespace MazeRunner.ViewModels
                 
             }
         }
-
+        /// <summary>
+        /// Num of rows in maze
+        /// </summary>
         private int rows;
+        /// <summary>
+        /// ViewModel rows property
+        /// </summary>
         public int VM_Rows
         {
             get
@@ -129,7 +178,9 @@ namespace MazeRunner.ViewModels
                 MyModel.SetRows(value);
             }
         }
-
+        /// <summary>
+        /// ViewModel initial position property
+        /// </summary>
         public Position VM_InitialPos
         {
             get
@@ -141,17 +192,15 @@ namespace MazeRunner.ViewModels
                 VM_PlayerLocation = value;
             }
         }
-
+        /// <summary>
+        /// Request model to solve the maze
+        /// </summary>
+        /// <returns>solution to maze</returns>
         public string SolveMaze()
         {
             return MyModel.SolveMaze();
         }
-     
-
-        /*public void MovePlayer(string direction)
-        {
-            throw new NotImplementedException();
-        }*/
+  
     }
 
 

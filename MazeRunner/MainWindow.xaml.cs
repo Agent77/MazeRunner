@@ -31,7 +31,6 @@ namespace MazeRunner
         private void SingleClick(object sender, RoutedEventArgs e)
         {
             SingleStartWindow n = new SingleStartWindow();
-            n.Show();
             this.Close();
 
         }
@@ -39,7 +38,7 @@ namespace MazeRunner
         private void MultiClick(object sender, RoutedEventArgs e)
         {
             MultiStartWindow mw = new MultiStartWindow();
-            mw.Show();
+           // mw.Show();
             this.Close();
 
         }

@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="ConnectionFailedWindow" Height="300" Width="300">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="104,89,0,0" TextWrapping="Wrap" Text="CONNECTION FAILED!" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="114" Width="108">
+        <Image Source="/Images/castle.jpg" Stretch="Fill"/>
+
+        <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="30" FontStyle="Italic" FontWeight="ExtraBold" Margin="17,45,5.333,57.667" TextWrapping="Wrap" Text="CONNECTION FAILED!" RenderTransformOrigin="0.5,0.5" Height="168">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

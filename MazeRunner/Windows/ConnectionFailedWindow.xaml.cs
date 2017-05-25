@@ -16,6 +16,7 @@ namespace MazeRunner.Windows
 {
     /// <summary>
     /// Interaction logic for ConnectionFailedWindow.xaml
+    /// Used when connection to server failed
     /// </summary>
     public partial class ConnectionFailedWindow : Window
     {

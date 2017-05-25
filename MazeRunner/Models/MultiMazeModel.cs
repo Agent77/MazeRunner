@@ -53,7 +53,7 @@ namespace MazeRunner.Models
             }
             
             TcpMessenger.Write(s);
-            string maze = TcpMessenger.read();
+            string maze = TcpMessenger.Read();
             MyMaze = Maze.FromJSON(maze);
             InitialPos = MyMaze.InitialPos;
             GoalPos = MyMaze.GoalPos;
@@ -67,7 +67,7 @@ namespace MazeRunner.Models
             {
                 while (true)
                 {
-                    string pos = TcpMessenger.read();
+                    string pos = TcpMessenger.Read();
 
                     //Position currPos = oppPos;
 
@@ -106,7 +106,7 @@ namespace MazeRunner.Models
         {
             string request = "list";
             TcpMessenger.Write(request);
-            string response = TcpMessenger.read();
+            string response = TcpMessenger.Read();
             response =  response.Replace("\n", "");
             response = response.Replace("[", "");
             response = response.Replace("]", "");
@@ -146,7 +146,7 @@ namespace MazeRunner.Models
             TcpMessenger.Write(s);
 
             
-            string maze = TcpMessenger.read();
+            string maze = TcpMessenger.Read();
             MyMaze = Maze.FromJSON(maze);
             InitialPos = MyMaze.InitialPos;
             GoalPos = MyMaze.GoalPos;
@@ -160,7 +160,7 @@ namespace MazeRunner.Models
             {
                 while (true)
                 {
-                    string pos = TcpMessenger.read();
+                    string pos = TcpMessenger.Read();
 
                     //Position currPos = oppPos;
 

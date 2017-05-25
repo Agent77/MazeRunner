@@ -16,6 +16,7 @@ namespace MazeRunner.Windows
 {
     /// <summary>
     /// Interaction logic for LoserWindow.xaml
+    /// Displayed when a player has lost
     /// </summary>
     public partial class LoserWindow : Window
     {

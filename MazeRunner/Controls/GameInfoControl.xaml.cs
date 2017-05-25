@@ -25,35 +25,36 @@ namespace MazeRunner.Controls
             InitializeComponent(); 
         }
 
-        private void StartBtnClick(object sender, RoutedEventArgs e)
-        {
-          
-        }
-
-
-
+        /// <summary>
+        /// Dependency Property for Rows
+        /// </summary>
         public int Rows
         {
             get { return (int)GetValue(RowsProperty); }
             set { SetValue(RowsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Rows.  This enables animation, styling, binding, etc...
+        // Using a DependencyProperty as the backing store for Rows.
         public static readonly DependencyProperty RowsProperty =
             DependencyProperty.Register("Rows", typeof(int), typeof(GameInfoControl), new PropertyMetadata(0));
 
 
-
+        /// <summary>
+        /// Dependency Property for Cols
+        /// </summary>
         public int Cols
         {
             get { return (int)GetValue(ColsProperty); }
             set { SetValue(ColsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Cols.  This enables animation, styling, binding, etc...
+        // Using a DependencyProperty as the backing store for Cols.
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("Cols", typeof(int), typeof(GameInfoControl), new PropertyMetadata(0));
 
+        private void StartBtnClick(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

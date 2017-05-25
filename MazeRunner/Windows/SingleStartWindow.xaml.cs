@@ -33,9 +33,15 @@ namespace MazeRunner.Windows
             {
                 ConnectionFailedWindow c = new ConnectionFailedWindow();
                 c.Show();
-                this.Close();
+                //this.Close();
+               // return;
             }
-            GameInfo.btnStart.Click += BtnStart_Click;
+            if (success >= 0)
+            {
+                GameInfo.btnStart.Click += BtnStart_Click;
+                this.Show();
+            }
+          
         }
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
