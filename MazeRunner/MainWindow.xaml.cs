@@ -46,7 +46,6 @@ namespace MazeRunner
         private void MultiClick(object sender, RoutedEventArgs e)
         {
             MultiStartWindow mw = new MultiStartWindow();
-           // mw.Show();
             this.Close();
 
         }
