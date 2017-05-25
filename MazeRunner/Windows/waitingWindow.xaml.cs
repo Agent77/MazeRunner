@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace MazeRunner.Windows
 {
     /// <summary>
-    /// Interaction logic for waitingWindow.xaml
+    /// Waiting window for player who starts a multi game
     /// </summary>
     public partial class waitingWindow : Window
     {

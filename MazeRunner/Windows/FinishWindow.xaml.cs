@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace MazeRunner.Windows
 {
     /// <summary>
-    /// Interaction logic for FinishWindow.xaml
+    /// Popup window for winner in game
     /// </summary>
     public partial class FinishWindow : Window
     {
@@ -26,6 +26,9 @@ namespace MazeRunner.Windows
             this.Loaded += win_loaded;
         }
 
+        /// <summary>
+        /// A theme song to play when window's showed
+        /// </summary>
         public SoundPlayer sPlayer = new SoundPlayer(MazeRunner.Properties.Resources.frozen);
 
         private void win_loaded(object sender, RoutedEventArgs e)

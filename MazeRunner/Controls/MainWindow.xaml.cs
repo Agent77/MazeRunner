@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace MazeRunner.Controls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Main window user control
     /// </summary>
     public partial class MainWindow : UserControl
     {

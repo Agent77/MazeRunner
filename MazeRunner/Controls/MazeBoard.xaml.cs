@@ -20,14 +20,13 @@ using System.Windows.Threading;
 namespace MazeRunner.Controls
 {
     /// <summary>
-    /// Interaction logic for MazeBoard.xaml
+    /// MazeBoard user control, represents the maze board and in charge of its view logic
     /// </summary>
     public partial class MazeBoard : UserControl
     {
-        //private MazeViewModel myVM;
-        private Image goalImg;
-        private Image wallImg;
-        private Image player;
+        private Image goalImg; //Reperesents the goal cell on the board
+        private Image wallImg; //Represents every wall cell
+        private Image player; //Reperesents the player on the board
         public Image Player
         {
             get
@@ -39,9 +38,10 @@ namespace MazeRunner.Controls
                 player= value;
             }
         }
-        private bool isOpponent;
 
-        private bool finishedGame = false;
+        private bool isOpponent; //A boolean member that is set to true when it's opponent's board
+
+        private bool finishedGame = false; //A boolean member that is set to true when player at goal position
         public bool FinishedGame {
             get
             {
@@ -53,31 +53,31 @@ namespace MazeRunner.Controls
             }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MazeBoard()
         {
             InitializeComponent();
         }
 
-
-        public void UserControl_Loaded(object o, RoutedEventArgs e)
-        {
-            
-        }
-
-
+        /// <summary>
+        /// Method to set the color on a given cell on the board
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="c"></param>
+        /// <returns>Relavent color</returns>
         private SolidColorBrush GetColour(int r, int c)
         {
             if (MazeString[r][c] == '0'|| MazeString[r][c] == '*')
                 return Brushes.PaleTurquoise;
-            /*if (MazeString[r][c] == '*')
-                return Brushes.White;
-            if (MazeString[r][c] == '#')
-                return Brushes.White;*/
             return Brushes.White;
         }
 
 
-
+        /// <summary>
+        /// Represents the string of the given maze from server
+        /// </summary>
         private string[] mstring;
         public string[] MazeString
         {
@@ -95,18 +95,24 @@ namespace MazeRunner.Controls
             m.mstring = (string[])e.NewValue;
         }
 
+        /// <summary>
+        /// Main method to draw the maze Board. 
+        /// Gets false as parameter when its palyer's board and true otherwise
+        /// </summary>
+        /// <param name="competitor"></param>
         public void DrawBoard(bool competitor)
         {
 
-            //loop
+            
             int x = 0;
             int y = 0;
-            int rowsDiff = 300/Rows;
+            int rowsDiff = 300 / Rows;
             int colsDiff = 300 / Cols;
             int xPlace = 0;
             int yPlace = 0;
             isOpponent = competitor;
             
+            // Loop for creating each cell
             for (x = 0; xPlace < Cols; x += colsDiff )
             {
                 for (y = 0; yPlace < Rows; y += rowsDiff)
@@ -116,11 +122,9 @@ namespace MazeRunner.Controls
                     SolidColorBrush b = GetColour(yPlace, xPlace);
                     p.Fill = b;
                     p.Data = r;
-                    //p.Stroke = Brushes.Green;
-                    //p.StrokeThickness = 1;
                     Board.Children.Add(p);
 
-
+                    //When a cell is a wall it adds the relevant wall image
                     if (MazeString[yPlace][xPlace] == '1')
                     {
                         wallImg = new Image();
@@ -146,6 +150,7 @@ namespace MazeRunner.Controls
                 xPlace++;
             }
             
+            //Adding goal cell image
             goalImg = new Image();
             goalImg.Width = colsDiff;
             goalImg.Height = rowsDiff;
@@ -154,6 +159,8 @@ namespace MazeRunner.Controls
             Canvas.SetTop(goalImg, GoalPos.Row * rowsDiff);
             goalImg.Stretch = Stretch.Fill;
             Board.Children.Add(goalImg);
+
+            //Adding relevant image for player
             player = new Image();
             player.Width = colsDiff;
             player.Height = rowsDiff;
@@ -173,7 +180,9 @@ namespace MazeRunner.Controls
         }
 
         
-
+        /// <summary>
+        /// Represents opponents position on its board
+        /// </summary>
         public Position OppPos
         {
             get { return (Position)GetValue(OppPosProperty); }
@@ -185,7 +194,9 @@ namespace MazeRunner.Controls
             DependencyProperty.Register("OppPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(new Position()));
 
 
-
+        /// <summary>
+        /// Represents goal position on the board
+        /// </summary>
         public Position GoalPos
         {
             get { return (Position)GetValue(GoalPosProperty); }
@@ -197,7 +208,9 @@ namespace MazeRunner.Controls
             DependencyProperty.Register("GoalPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(new Position()));
 
 
-
+        /// <summary>
+        /// Represents initial position on the board
+        /// </summary>
         public Position InitialPos
         {
             get { return (Position)GetValue(InitialPosProperty); }
@@ -208,7 +221,9 @@ namespace MazeRunner.Controls
         public static readonly DependencyProperty InitialPosProperty =
             DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeBoard), new PropertyMetadata(new Position()));
 
-
+        /// <summary>
+        /// Represents player's position on the board
+        /// </summary>
         private Position playerPosition;
         public Position PlayerPosition
         {
@@ -222,9 +237,11 @@ namespace MazeRunner.Controls
             }
         }
 
-       /* public static readonly DependencyProperty PlayerPositionProperty =
-            DependencyProperty.Register("PlayerPosition", typeof(Position), typeof(MazeBoard), new PropertyMetadata(MovePlayer));*/
-
+        /// <summary>
+        /// Main method for moving the player on the board
+        /// </summary>
+        /// <param name="k"></param>
+        /// <returns>Number to represent current move's result</returns>
         public int MovePlayer(Key k)
         {
             //Other player won
@@ -242,7 +259,7 @@ namespace MazeRunner.Controls
             int colsDiff = 300 / Cols;
             Position current = PlayerPosition;
            
-          //  Canvas.SetLeft(Brushes.White, PlayerPosition.Row);
+            //Moving player by pressed key
             switch (k)
             {
                 case Key.Left:
@@ -282,12 +299,14 @@ namespace MazeRunner.Controls
                     Canvas.SetTop(Player, PlayerPosition.Row*rowsDiff);
                     break;
             }
+            //Return 3 when current player won 
             if (MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent==false)
             {
                 FinishedGame = true;
                 return 3;
                
             }
+            //Return 2 when opponent player won
             if(MazeString[playerPosition.Row][playerPosition.Col] == '#' && isOpponent)
             {
                 finishedGame = true;
@@ -296,6 +315,11 @@ namespace MazeRunner.Controls
             return 1;
         }
 
+        /// <summary>
+        /// Method that checks whether a player can move and stay in board's bounds
+        /// </summary>
+        /// <param name="playerPosition"></param>
+        /// <returns>True when player can move and false otherwise</returns>
         private bool IsInBounds(Position playerPosition)
         {
            if(playerPosition.Row>=0 && playerPosition.Row<=Rows-1 && playerPosition.Col>=0 && playerPosition.Col <= Cols - 1)
@@ -305,6 +329,9 @@ namespace MazeRunner.Controls
             return false;
         }
 
+        /// <summary>
+        /// Represents rows of board
+        /// </summary>
         public int Rows {
             get
             {
@@ -320,7 +347,9 @@ namespace MazeRunner.Controls
         public static readonly DependencyProperty RowsProperty = 
             DependencyProperty.Register("Rows", typeof(int), typeof(MazeBoard), new PropertyMetadata());
 
-     
+        /// <summary>
+        /// Represents columns of board 
+        /// </summary>
         public int Cols
         {
             get { return (int)GetValue(ColsProperty); }
@@ -331,7 +360,9 @@ namespace MazeRunner.Controls
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("Cols", typeof(int), typeof(MazeBoard), new PropertyMetadata());
 
-       
+        /// <summary>
+        /// Method that takes player back to initial position
+        /// </summary>
         public void RestartGame()
         {
             int rowsDiff = 300 / Rows;
@@ -345,11 +376,11 @@ namespace MazeRunner.Controls
             }
         }
 
-        public void BackToMain()
-        {
-            
-        }
-
+        
+        /// <summary>
+        /// Method that gets a solution for the game and moves player from initial position to goal position
+        /// </summary>
+        /// <param name="solution"></param>
         public void SolveMaze(string solution)
         {
             int rowsDiff = 300 / Rows;
@@ -368,7 +399,6 @@ namespace MazeRunner.Controls
                     if (solEnum.Current == '0')
                     {
                         MovePlayer(Key.Up);
-
                     }
 
                     if (solEnum.Current == '1')

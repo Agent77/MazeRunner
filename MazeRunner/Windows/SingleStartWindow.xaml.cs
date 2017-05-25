@@ -17,12 +17,16 @@ using System.Windows.Shapes;
 namespace MazeRunner.Windows
 {
     /// <summary>
-    /// Interaction logic for SingleStartWindow.xaml
+    /// Single start window
     /// </summary>
     public partial class SingleStartWindow : Window
     {
         private MazeViewModel myVM;
         private int x;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public SingleStartWindow()
         {
             myVM = new SingleViewModel(new SingleMazeModel());
@@ -44,6 +48,11 @@ namespace MazeRunner.Windows
           
         }
 
+        /// <summary>
+        /// When start button clicked, send generate command and creates a single game window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
             myVM.MyModel.SendMaze("generate");

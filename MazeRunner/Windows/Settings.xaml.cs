@@ -16,15 +16,23 @@ using System.Windows.Shapes;
 namespace MazeRunner.Windows
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Settings window
     /// </summary>
     public partial class Settings : Window
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Settings()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// When ok button is clicked, the relevant default maze properties are changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             if (txtServerIp.Text.Length > 0)
@@ -50,6 +58,11 @@ namespace MazeRunner.Windows
             this.Close();
         }
 
+        /// <summary>
+        /// When back button is clicked the window closes itself
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
